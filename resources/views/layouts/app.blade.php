@@ -27,6 +27,13 @@
 @stop
 
 @section('js')
-
     @livewireScripts
+    <script type="text/javascript">
+        livewire.on('closeModal', () => {
+            $('.modal').modal('hide');
+            setTimeout(() => {
+                $('.alert').fadeOut(2000);
+            }, 2000);
+        });
+    </script>
 @stop
