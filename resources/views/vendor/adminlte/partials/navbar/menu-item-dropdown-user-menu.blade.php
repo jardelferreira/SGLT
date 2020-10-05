@@ -71,7 +71,7 @@
             <div class="mt-3 space-y-1">
                 <!-- Account Management -->
                 <x-jet-responsive-nav-link href="/user/profile" :active="request()->routeIs('profile.show')">
-                    {{ __('Profile') }}
+                    {{ __('Perfil') }}
                 </x-jet-responsive-nav-link>
 
                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -87,7 +87,7 @@
                     <x-jet-responsive-nav-link href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                        {{ __('Logout') }}
+                        {{ __('Sair') }}
                     </x-jet-responsive-nav-link>
                 </form>
 
@@ -96,23 +96,23 @@
                     <div class="border-t border-gray-200"></div>
 
                     <div class="block px-4 py-2 text-xs text-gray-400">
-                        {{ __('Manage Team') }}
+                        {{ __('Gerenciar equipe') }}
                     </div>
 
                     <!-- Team Settings -->
                     <x-jet-responsive-nav-link href="/teams/{{ Auth::user()->currentTeam->id }}" :active="request()->routeIs('teams.show')">
-                        {{ __('Team Settings') }}
+                        {{ __('Config. equipe') }}
                     </x-jet-responsive-nav-link>
 
                     <x-jet-responsive-nav-link href="/teams/create" :active="request()->routeIs('teams.create')">
-                        {{ __('Create New Team') }}
+                        {{ __('Criar equipe') }}
                     </x-jet-responsive-nav-link>
 
                     <div class="border-t border-gray-200"></div>
 
                     <!-- Team Switcher -->
                     <div class="block px-4 py-2 text-xs text-gray-400">
-                        {{ __('Switch Teams') }}
+                        {{ __('Trocar de equipe') }}
                     </div>
 
                     @foreach (Auth::user()->allTeams() as $team)
@@ -120,7 +120,7 @@
                     @endforeach
                 @endif
             </div>
-            <a class="btn btn-default btn-flat float-right @if(!$profile_url) btn-block @endif"
+            <a class="btn btn-outline-danger btn-flat rounded float-right @if(!$profile_url) btn-block @endif"
                href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 <i class="fa fa-fw fa-power-off"></i>
                 {{ __('adminlte::adminlte.log_out') }}
