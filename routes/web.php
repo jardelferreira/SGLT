@@ -2,7 +2,7 @@
 
 use App\Http\Livewire\CourtyardLivewire;
 use App\Http\Livewire\LoteLivewire;
-use App\Http\Livewire\Mastlivewire;
+use App\Http\Livewire\MastLivewire;
 use App\Http\Livewire\ProjectLivewire;
 use App\Http\Livewire\TrechoLivewire;
 use App\Http\Livewire\TypeLivewire;
