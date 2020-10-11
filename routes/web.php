@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Livewire\CourtyardLivewire;
 use App\Http\Livewire\LoteLivewire;
+use App\Http\Livewire\Mastlivewire;
 use App\Http\Livewire\ProjectLivewire;
 use App\Http\Livewire\TrechoLivewire;
 use App\Http\Livewire\TypeLivewire;
@@ -28,11 +30,13 @@ Route::prefix('dashboard')->middleware(['auth:sanctum', 'verified'])->group(func
 
     Route::prefix('config')->group(function (){
         Route::get('types', TypeLivewire::class)->name('dashboard.config.types');
+        Route::get('mastros', MastLivewire::class)->name('dashboard.config.mastros');
     });
     Route::prefix('projetos')->group(function (){
         Route::get('/',ProjectLivewire::class)->name('dashboard.projects');
         Route::get('/{projeto}/lotes',LoteLivewire::class)->name('dashboard.projects.lotes');
         Route::get('lotes/{lote}/trechos',TrechoLivewire::class)->name('dashboard.lotes.trechos');
+        Route::get('lotes/trechos/{trecho}/canteiros',CourtyardLivewire::class)->name('dashboard.trechos.canteiros');
     });
     }
 );

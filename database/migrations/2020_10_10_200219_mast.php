@@ -17,6 +17,7 @@ class Mast extends Migration
             $table->id();
             $table->float('height',8,2,true);
             $table->float('weight',8,2,true)->nullable();
+            $table->string('description')->nullable();
             $table->timestamps();
         });
         Schema::create('type_masts', function(Blueprint $table){

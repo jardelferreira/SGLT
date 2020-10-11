@@ -255,9 +255,13 @@ return [
                 [
                     'text' => 'Tipos',
                     'route' => 'dashboard.config.types'
-                ]
+                ],
+                [
+                    'text' => 'Mastros',
+                    'route' => 'dashboard.config.mastros'
+                ],
             ]
-            ],
+        ],
         [
             'text'    => 'projetos',
             'icon' => 'fas fa-code-branch',
@@ -277,7 +281,7 @@ return [
                                 [
                                     'text' => 'Gerenciar Lotes',
                                     'url'  => 'dashboard/projetos/1/lotes',
-                                ],[
+                                ], [
                                     'text' => 'Trechos',
                                     'url' => '#',
                                     'submenu' => [
@@ -286,11 +290,16 @@ return [
                                             'url'  => 'dashboard/projetos/lotes/1/trechos',
                                         ],
                                         [
-                                            'text' => 'Trecho 01',
-                                            'url' => 'dashboard/lotes/1/trechos'
+                                            'text' => 'Canteiros',
+                                            'submenu' => [
+                                                [
+                                                    'text' => 'Gerenciar Canteiros',
+                                                    'url' => 'dashboard/projetos/lotes/trechos/1/canteiros'
+                                                ]
+                                            ]
                                         ]
-                                        ]
-                                        ],
+                                    ]
+                                ],
                                 [
                                     'text' => 'level_three',
                                     'url'  => '#',

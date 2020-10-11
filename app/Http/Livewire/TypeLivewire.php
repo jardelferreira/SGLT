@@ -12,7 +12,7 @@ class TypeLivewire extends Component
     public function render()
     {
         $this->types = Type::all();
-        return view('livewire.types.page');
+        return view('livewire.config.types.page');
     }
     public function create()
     {

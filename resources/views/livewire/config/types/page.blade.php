@@ -1,6 +1,6 @@
 <div>
-    @include('livewire.types.create')
-    @include('livewire.types.update')
+    @include('livewire.config.types.create')
+    @include('livewire.config.types.update')
     @if (session()->has('message'))
         <div class="alert alert-success" style="margin-top:30px;">
           {{ session('message') }}
