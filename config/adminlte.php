@@ -250,29 +250,47 @@ return [
         ],
         ['header' => 'account_settings'],
         [
+            'text' => 'Configurações',
+            'submenu' => [
+                [
+                    'text' => 'Tipos',
+                    'route' => 'dashboard.config.types'
+                ]
+            ]
+            ],
+        [
             'text'    => 'projetos',
             'icon' => 'fas fa-code-branch',
             'submenu' => [
                 [
-                    'text' => 'Meu projeto',
+                    'text' => 'Gerenciar',
                     'url'  => 'dashboard/projetos',
                 ],
                 [
-                    'text'    => 'level_one',
+                    'text'    => 'TBAPI',
                     'url'     => '#',
                     'submenu' => [
                         [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
+                            'text'    => 'Lotes',
                             'url'     => '#',
                             'submenu' => [
                                 [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
+                                    'text' => 'Gerenciar Lotes',
+                                    'url'  => 'dashboard/projetos/1/lotes',
+                                ],[
+                                    'text' => 'Trechos',
+                                    'url' => '#',
+                                    'submenu' => [
+                                        [
+                                            'text' => 'Gerenciar Trechos',
+                                            'url'  => 'dashboard/projetos/lotes/1/trechos',
+                                        ],
+                                        [
+                                            'text' => 'Trecho 01',
+                                            'url' => 'dashboard/lotes/1/trechos'
+                                        ]
+                                        ]
+                                        ],
                                 [
                                     'text' => 'level_three',
                                     'url'  => '#',

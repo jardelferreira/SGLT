@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Livewire\LoteLivewire;
 use App\Http\Livewire\ProjectLivewire;
+use App\Http\Livewire\TrechoLivewire;
+use App\Http\Livewire\TypeLivewire;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +25,14 @@ Route::get('home', function () {
 });
 Route::prefix('dashboard')->middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/',function(){return view('dashboard');})->name('dashboard');
-    Route::get('/projetos',ProjectLivewire::class)->name('dashboard.projects');
+
+    Route::prefix('config')->group(function (){
+        Route::get('types', TypeLivewire::class)->name('dashboard.config.types');
+    });
+    Route::prefix('projetos')->group(function (){
+        Route::get('/',ProjectLivewire::class)->name('dashboard.projects');
+        Route::get('/{projeto}/lotes',LoteLivewire::class)->name('dashboard.projects.lotes');
+        Route::get('lotes/{lote}/trechos',TrechoLivewire::class)->name('dashboard.lotes.trechos');
+    });
     }
 );

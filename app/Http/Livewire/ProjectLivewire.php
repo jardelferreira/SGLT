@@ -27,7 +27,6 @@ class ProjectLivewire extends Component
     
     }
      
-  
     public function store()
     {
         $this->validate([
