@@ -5,7 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Mast;
 use Livewire\Component;
 
-class Mastlivewire extends Component
+class MastLivewire extends Component
 {
     public $masts, $mast_id, $height, $weight, $description;
     public function render()
