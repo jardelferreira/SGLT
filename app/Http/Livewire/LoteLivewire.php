@@ -8,16 +8,37 @@ use Livewire\Component;
 
 class LoteLivewire extends Component
 {
-    public $lotes, $name,$lote_id, $projeto;
+    public $lotes, $name,$lote_id, $projeto,$project_lotes;
 
     public function mount(Project $projeto)
     {
+        // $this->project_lotes = $projeto->lotes()->get();
         $this->projeto = $projeto;
     }
+
     public function render()
     {
         $this->lotes = Lote::all();
         return view('livewire.lotes.page');
+    }
+
+    public function getSubmenu(array $menu, $model)
+    {
+        $modelo = [
+            'text' => $model->name,
+            'url' => '#',
+            'submenu' => [
+                    [
+                        'text' => 'Gerenciar',
+                        'url' => '#'
+                    ]
+                ]
+                ];   
+                array_push($menu,$modelo);
+                foreach ($menu as $key => $value) {
+                  
+                }        
+       
     }
 
     public function create()

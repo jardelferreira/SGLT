@@ -10,4 +10,9 @@ class Lote extends Model
     use HasFactory;
 
     protected $fillable = ['name','project_id'];
+
+    public function trechos()
+    {
+        return $this->hasMany(Trecho::class);
+    }
 }

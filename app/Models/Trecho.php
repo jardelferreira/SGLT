@@ -10,4 +10,9 @@ class Trecho extends Model
     use HasFactory;
 
     protected $fillable = ['name','lote_id'];
+
+    public function canteiros()
+    {
+        return $this->hasMany(Courtyard::class);
+    }
 }

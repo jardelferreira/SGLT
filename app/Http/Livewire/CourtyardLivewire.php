@@ -15,7 +15,7 @@ class CourtyardLivewire extends Component
     }
     public function render()
     {
-        $this->courtyards = Courtyard::all();
+        $this->courtyards = $this->trecho->canteiros()->get();
         return view('livewire.courtyards.page');
     }
     public function create()
