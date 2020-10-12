@@ -43,6 +43,8 @@ class TrechoLivewire extends Component
 
         $this->resetInputFields();
         $this->emit('closeModal');
+        $this->emit('menuUpdate');
+
     }
   
     public function edit($id)
@@ -59,6 +61,8 @@ class TrechoLivewire extends Component
         $lote->delete();
         session()->flash('message', 'Trecho Deleted Successfully.');
         $this->emit('closeModal');
+        $this->emit('menuUpdate');
+
     }
     public function cancel()
     {

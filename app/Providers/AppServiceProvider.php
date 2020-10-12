@@ -55,6 +55,7 @@ class AppServiceProvider extends ServiceProvider
                             'url' => "dashboard/projetos/{$project->id}/lotes",
                         ]);
                         foreach ($lotes->get() as $key2 => $lote) {
+                            //Listagem de lotes
                             array_push($menu['submenu'][$key + 1]['submenu'], [
                                 'text' => $lote->name,
                                 'url' => "#",
@@ -65,8 +66,8 @@ class AppServiceProvider extends ServiceProvider
                                     'text' => "Gerenciar Trechos",
                                     'url' => "dashboard/projetos/lotes/{$lote->id}/trechos",
                                 ]);
-                                //dd($menu);
                                 foreach ($trechos->get() as $key3 => $trecho) {
+                                    //Listagem de Trechos
                                     array_push($menu['submenu'][$key + 1]['submenu'][$key2 + 1]['submenu'], [
                                         'text' => $trecho->name,
                                         'url' => "dashboard/projetos/lotes/{$lote->id}/trechos",
@@ -77,10 +78,12 @@ class AppServiceProvider extends ServiceProvider
                                             'text' => "Gerenciar Canteiros",
                                             'url' => "dashboard/projetos/lotes/trechos/{$trecho->id}/canteiros",
                                         ]);
-                                        foreach ($canteiros as $key => $canteiro) {
+                                        foreach ($canteiros->get() as $key4 => $canteiro) {
+                                            //dd($canteiro->name);
+                                            //dd($menu['submenu'][$key + 1]['submenu'][$key2 + 1]['submenu'][$key3 + 1]['submenu']);
                                             array_push($menu['submenu'][$key + 1]['submenu'][$key2 + 1]['submenu'][$key3 + 1]['submenu'], [
-                                                'text' => $canteiro->name,
-                                                'url' => "dashboard/projetos/lotes/trechos/{$canteiro->id}/canteiros",
+                                                'text' => $canteiro->name ,
+                                                'url' => "dashboard/projetos/lotes/trechos/canteiros/{$canteiro->id}",
                                                 'submenu' => []
                                             ]);
                                         }

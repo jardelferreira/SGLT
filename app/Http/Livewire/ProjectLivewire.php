@@ -43,6 +43,8 @@ class ProjectLivewire extends Component
 
         $this->resetInputFields();
         $this->emit('closeModal');
+        $this->emit('menuUpdate');
+
     }
   
     public function edit($id)
@@ -61,6 +63,7 @@ class ProjectLivewire extends Component
         $project->delete();
         session()->flash('message', 'Project Deleted Successfully.');
         $this->emit('closeModal');
+        $this->emit('menuUpdate');
     }
     public function cancel()
     {

@@ -47,6 +47,8 @@ class CourtyardLivewire extends Component
 
         $this->resetInputFields();
         $this->emit('closeModal');
+        $this->emit('menuUpdate');
+
     }
   
     public function edit($id)
@@ -65,6 +67,8 @@ class CourtyardLivewire extends Component
         $trecho->delete();
         session()->flash('message', 'Courtyard Deleted Successfully.');
         $this->emit('closeModal');
+        $this->emit('menuUpdate');
+
     }
     public function cancel()
     {

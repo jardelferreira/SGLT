@@ -34,5 +34,8 @@
                 $('.alert').fadeOut(2000);
             }, 2000);
         });
+        livewire.on('menuUpdate',()=>{
+            location.reload();
+        })
     </script>
 @stop
