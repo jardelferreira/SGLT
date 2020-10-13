@@ -15,7 +15,7 @@
     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
         Cadastrar novo lote
          </button>
-    <table class="table table-striped bg-light mt-2">
+    <table class="table table-striped bg-light mt-2" id="lote_table">
         <thead>
             <tr>
                 <th>No.</th>

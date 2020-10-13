@@ -19,12 +19,6 @@ class CreateTrechosTable extends Migration
             $table->string('name');
             $table->timestamps();
         });
-        Schema::create('lotes_trecho', function(Blueprint $table){
-            $table->id();
-            $table->foreignId('lote_id')->references('id')->on('lotes')->onDeelte('cascade');
-            $table->foreignId('trecho_id')->references('id')->on('trechos')->onDeelte('cascade');
-            $table->timestamps();
-        });
     }
 
     /**

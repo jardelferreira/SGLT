@@ -19,11 +19,6 @@ class CreateLotesTable extends Migration
             $table->foreignId('project_id')->references('id')->on('projects')->onDelete('cascade');
             $table->timestamps();
         });
-        Schema::create('projects_lote', function(Blueprint $table){
-            $table->id();
-            $table->foreignId('project_id')->references('id')->on('projects')->onDelete('cascade');
-            $table->foreignId('lote_id')->references('id')->on('lotes')->onDelete('cascade');
-        });
     }
 
     /**

@@ -14,6 +14,7 @@
     <!-- Page Content -->
     <main>
         {{ $slot }}
+        
     </main>
 
 
@@ -34,8 +35,16 @@
                 $('.alert').fadeOut(2000);
             }, 2000);
         });
-        livewire.on('menuUpdate',()=>{
+        livewire.on('menuUpdate', () => {
             location.reload();
         })
+
     </script>
+    {{-- <script>
+        $(document).ready(function() {
+            $('table').DataTable();
+        });
+
+    </script> --}}
 @stop
+@section(' plugins.Datatables ', true)
