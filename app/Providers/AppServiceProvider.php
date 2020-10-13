@@ -43,7 +43,7 @@ class AppServiceProvider extends ServiceProvider
                 'submenu' => [
                     [
                         'text' => 'Gerenciar Projetos',
-                        'icon_color' => 'cyan',
+                        'icon_color' => 'lime',
                         'url' => 'dashboard/projetos'
                     ]
                 ]
@@ -63,6 +63,12 @@ class AppServiceProvider extends ServiceProvider
                             'url' => "dashboard/projetos/{$project->id}/lotes",
                             'icon_color' => 'cyan'
                         ]);
+                        array_push($menu['submenu'][$key + 1]['submenu'],[
+                            'text' => "Estoque {$project->name}",
+                            'icon' => "fas fa-boxes",
+                            'url' => "#",
+                            'icon_color' => 'cyan'
+                        ]);
                         foreach ($lotes->get() as $key2 => $lote) {
                             //Listagem de lotes
                             array_push($menu['submenu'][$key + 1]['submenu'], [
@@ -72,10 +78,16 @@ class AppServiceProvider extends ServiceProvider
                                 'submenu' => []
                             ]);
                             if ($trechos = $lote->trechos()) {
-                                array_push($menu['submenu'][$key + 1]['submenu'][$key2 + 1]['submenu'], [
+                                array_push($menu['submenu'][$key + 1]['submenu'][$key2 + 2]['submenu'], [
                                     'text' => "Gerenciar Trechos",
                                     'url' => "dashboard/projetos/lotes/{$lote->id}/trechos",
                                     'icon_color' => 'red',
+                                ]);
+                                array_push($menu['submenu'][$key + 1]['submenu'][$key2 + 2]['submenu'],[
+                                    'text' => "Estoque {$lote->name}",
+                                    'icon' => "fas fa-boxes",
+                                    'url' => "#",
+                                    'icon_color' => 'red'
                                 ]);
                                 foreach ($trechos->get() as $key3 => $trecho) {
                                     //Listagem de Trechos
@@ -86,28 +98,40 @@ class AppServiceProvider extends ServiceProvider
                                         'submenu' => []
                                     ]);
                                     if ($canteiros = $trecho->canteiros()) {
-                                        array_push($menu['submenu'][$key + 1]['submenu'][$key2 + 1]['submenu'][$key3 + 1]['submenu'], [
+                                        array_push($menu['submenu'][$key + 1]['submenu'][$key2 + 1]['submenu'][$key3 + 2]['submenu'], [
                                             'text' => "Gerenciar Canteiros",
                                             'icon_color' => 'yellow',
                                             'url' => "dashboard/projetos/lotes/trechos/{$trecho->id}/canteiros",
                                         ]);
+                                        array_push($menu['submenu'][$key + 1]['submenu'][$key2 + 1]['submenu'][$key3 + 2]['submenu'],[
+                                            'text' => "Estoque {$trecho->name}",
+                                            'icon' => "fas fa-boxes",
+                                            'url' => "#",
+                                            'icon_color' => 'yellow'
+                                        ]);
                                         foreach ($canteiros->get() as $key4 => $canteiro) {
                                             //dd($canteiro->name);
                                             //dd($menu['submenu'][$key + 1]['submenu'][$key2 + 1]['submenu'][$key3 + 1]['submenu']);
-                                            array_push($menu['submenu'][$key + 1]['submenu'][$key2 + 1]['submenu'][$key3 + 1]['submenu'], [
+                                            array_push($menu['submenu'][$key + 1]['submenu'][$key2 + 1]['submenu'][$key3 + 2]['submenu'], [
                                                 'text' => $canteiro->name,
                                                 'icon_color' => 'yellow',
                                                 'url' => "dashboard/projetos/lotes/trechos/canteiros/{$canteiro->id}",
                                                 'submenu' => []
                                             ]);
                                             if ($sectors = $canteiro->sectors()) {
-                                                array_push($menu['submenu'][$key + 1]['submenu'][$key2 + 1]['submenu'][$key3 + 1]['submenu'][$key4 + 1]['submenu'], [
+                                                array_push($menu['submenu'][$key + 1]['submenu'][$key2 + 1]['submenu'][$key3 + 2]['submenu'][$key4 + 2]['submenu'], [
                                                     'text' => "Gerenciar Setores",
                                                     'icon_color' => 'red',
                                                     'url' => "dashboard/projetos/lotes/trechos/canteiros/{$canteiro->id}/setores",
                                                 ]);
+                                                array_push($menu['submenu'][$key + 1]['submenu'][$key2 + 1]['submenu'][$key3 + 2]['submenu'][$key4 + 2]['submenu'],[
+                                                    'text' => "Estoque {$canteiro->name}",
+                                                    'icon' => "fas fa-boxes",
+                                                    'url' => "#",
+                                                    'icon_color' => 'red'
+                                                ]);
                                                 foreach ($sectors->get() as $key5 => $sector) {
-                                                    array_push($menu['submenu'][$key + 1]['submenu'][$key2 + 1]['submenu'][$key3 + 1]['submenu'][$key4 + 1]['submenu'], [
+                                                    array_push($menu['submenu'][$key + 1]['submenu'][$key2 + 1]['submenu'][$key3 + 2]['submenu'][$key4 + 2]['submenu'], [
                                                         'text' => "{$sector->name}",
                                                         'url' => "#",
                                                         'icon_color' => 'red',
@@ -116,6 +140,7 @@ class AppServiceProvider extends ServiceProvider
                                                                 'text' => "Estoque {$sector->name}",
                                                                 'url' => "#",
                                                                 'icon_color' => 'aqua',
+                                                                'icon' => "fas fa-boxes",
                                                                 'submenu' => [
                                                                     [
                                                                         'text' => "Consulta",
