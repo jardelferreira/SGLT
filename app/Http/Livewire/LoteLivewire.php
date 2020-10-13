@@ -18,7 +18,7 @@ class LoteLivewire extends Component
 
     public function render()
     {
-        $this->lotes = Lote::all();
+        $this->lotes = $this->projeto->lotes()->get();
         return view('livewire.lotes.page');
     }
 

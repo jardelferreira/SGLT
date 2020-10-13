@@ -10,4 +10,9 @@ class Courtyard extends Model
     use HasFactory;
 
     protected $fillable = ['name','location','trecho_id','description'];
+
+    public function sectors()
+    {
+        return $this->hasMany(Sector::class);
+    }
 }

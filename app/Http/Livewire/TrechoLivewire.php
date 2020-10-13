@@ -15,7 +15,7 @@ class TrechoLivewire extends Component
     }
     public function render()
     {
-        $this->trechos = Trecho::all();
+        $this->trechos = $this->lote->trechos()->get();
         return view('livewire.trechos.page');
     }
     public function create()
