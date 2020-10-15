@@ -7,7 +7,7 @@
         </div>
     @endif
     <div class="form-group d-flex col-12">
-        <h1 class="display-2">Trecho - <strong>{{$trecho->name}}</strong></h1>
+        <h1 class="display-2"><strong>{{$trecho->name}}</strong></h1>
     </div>
             <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">
                 <i class="fa fa-plus fa-lg" aria-hidden="true"> </i>  Cadastrar novo Canteiro
