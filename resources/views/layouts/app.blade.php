@@ -40,11 +40,20 @@
         })
 
     </script>
-    {{-- <script>
-        $(document).ready(function() {
-            $('table').DataTable();
-        });
-
-    </script> --}}
+    <script>
+        // $(document).ready(function() {
+        //     $('table').DataTable();
+        // });
+        $(document).ready( function () {
+			$('table')
+				.addClass( 'nowrap' )
+				.dataTable( {
+					responsive: true,
+					columnDefs: [
+						{ targets: [-1, -3], className: 'dt-body-right' }
+					]
+				} );
+		} );
+    </script>
 @stop
 @section(' plugins.Datatables ', true)

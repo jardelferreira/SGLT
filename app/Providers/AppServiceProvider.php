@@ -66,7 +66,7 @@ class AppServiceProvider extends ServiceProvider
                         array_push($menu['submenu'][$key + 1]['submenu'],[
                             'text' => "Estoque {$project->name}",
                             'icon' => "fas fa-boxes",
-                            'url' => "#",
+                            'url' => "dashboard/projetos/{$project->id}/estoque",
                             'icon_color' => 'cyan'
                         ]);
                         foreach ($lotes->get() as $key2 => $lote) {
@@ -87,7 +87,7 @@ class AppServiceProvider extends ServiceProvider
                                 array_push($menu['submenu'][$key + 1]['submenu'][$key2 + 2]['submenu'],[
                                     'text' => "Estoque {$lote->name}",
                                     'icon' => "fas fa-boxes",
-                                    'url' => "#",
+                                    'url' => "dashboard/projetos/lotes/{$lote->id}/estoque",
                                     'icon_color' => 'red'
                                 ]);
                                 foreach ($trechos->get() as $key3 => $trecho) {
@@ -107,7 +107,7 @@ class AppServiceProvider extends ServiceProvider
                                         array_push($menu['submenu'][$key + 1]['submenu'][$key2 + 2]['submenu'][$key3 + 2]['submenu'],[
                                             'text' => "Estoque {$trecho->name}",
                                             'icon' => "fas fa-boxes",
-                                            'url' => "#",
+                                            'url' => "dashboard/projetos/lotes/trechos/{$trecho->id}/estoque",
                                             'icon_color' => 'yellow'
                                         ]);
                                         foreach ($canteiros->get() as $key4 => $canteiro) {
@@ -128,7 +128,7 @@ class AppServiceProvider extends ServiceProvider
                                                 array_push($menu['submenu'][$key + 1]['submenu'][$key2 + 2]['submenu'][$key3 + 2]['submenu'][$key4 + 2]['submenu'],[
                                                     'text' => "Estoque {$canteiro->name}",
                                                     'icon' => "fas fa-boxes",
-                                                    'url' => "#",
+                                                    'url' => "dashboard/projetos/lotes/trechos/canteiros/{$canteiro->id}/estoque",
                                                     'icon_color' => 'red'
                                                 ]);
                                                 foreach ($sectors->get() as $key5 => $sector) {
@@ -146,21 +146,21 @@ class AppServiceProvider extends ServiceProvider
                                                                     [
                                                                         'text' => "Consulta",
                                                                         'icon_color' => 'aqua',
-                                                                        'url'  => "#"
+                                                                        'url'  => "dashboard/projetos/lotes/trechos/canteiros/setor/{$sector->id}/estoque"
                                                                     ], [
                                                                         'text' => "Entrada",
                                                                         'icon_color' => 'lime',
-                                                                        'url' => "#"
+                                                                        'url' => "dashboard/projetos/lotes/trechos/canteiros/setor/{$sector->id}/estoque/entrada"
                                                                     ], [
                                                                         'text' => "Saída",
                                                                         'icon_color' => 'red',
-                                                                        'url'  => "#"
+                                                                        'url'  => "dashboard/projetos/lotes/trechos/canteiros/setor/{$sector->id}/estoque/saida"
                                                                     ]
                                                                 ]
                                                             ],
                                                             [
                                                                 'text' => "Gerenciar {$sector->name}",
-                                                                'url' => "dashboard/projetos/lotes/trechos/canteiros/setores/{$sector->id}"
+                                                                'url' => "dashboard/projetos/lotes/trechos/canteiros/setor/{$sector->id}/painel"
                                                             ]
                                                         ]
                                                     ]);

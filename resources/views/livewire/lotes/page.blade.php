@@ -6,28 +6,23 @@
           {{ session('message') }}
         </div>
     @endif
-    <div class="form-group d-flex col-12">
-        <div class="col-4">
-            <input type="text" class="form-control" name="filter" id="filter" aria-describedby="helpId" placeholder="pequisar...">
-        </div>
-        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Pesquisar</button>
-    </div>
+    <h1 class="display-2">Projeto - {{$projeto->name}}</h1>
     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
-        Cadastrar novo lote
+        <i class="fa fa-plus fa-lg" aria-hidden="true"> </i>  Cadastrar novo Lote
          </button>
-    <table class="table table-striped bg-light mt-2" id="lote_table">
+    <table class="table table-striped bg-light table-responsive">
         <thead>
             <tr>
                 <th>No.</th>
                 <th>Nome</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody> 
             @foreach($lotes as $value)
             <tr>
                 <td>{{ $value->id }}</td>
                 <td>{{ $value->name }}</td>
-                <td>
+                <td class="row">
                 <button data-toggle="modal" data-target="#updateModal" wire:click="edit({{ $value->id }})" class="btn btn-primary btn-sm">Edit</button>
                 <button wire:click="delete({{ $value->id }})" class="btn btn-danger btn-sm">Delete</button>
                 </td>

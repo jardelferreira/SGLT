@@ -14,7 +14,7 @@
        Adicionar Mastros
         </button>
     </div>
-    <table class="table table-striped bg-light mt-2">
+    <table class="table table-striped bg-light mt-2 table-responsive">
         <thead>
             <tr>
                 <th>No.</th>
@@ -31,7 +31,7 @@
                 <td>{{ $value->height }}</td>
                 <td>{{ $value->weight }}</td>
                 <td>{{ $value->description }}</td>
-                <td>
+                <td class="row">
                 <button data-toggle="modal" data-target="#updateModal" wire:click="edit({{ $value->id }})" class="btn btn-primary btn-sm">Edit</button>
                 <button wire:click="delete({{ $value->id }})" class="btn btn-danger btn-sm">Delete</button>
                 </td>

@@ -5,6 +5,7 @@ use App\Http\Livewire\LoteLivewire;
 use App\Http\Livewire\MastLivewire;
 use App\Http\Livewire\ProjectLivewire;
 use App\Http\Livewire\SectorLivewire;
+use App\Http\Livewire\Sectors\StockLivewire;
 use App\Http\Livewire\TrechoLivewire;
 use App\Http\Livewire\TypeLivewire;
 use Illuminate\Support\Facades\Route;
@@ -27,18 +28,31 @@ Route::get('home', function () {
     return view('welcome');
 });
 Route::prefix('dashboard')->middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::get('/',function(){return view('dashboard');})->name('dashboard');
+    Route::get('/', function () {
+        return view('dashboard');
+    })->name('dashboard');
 
-    Route::prefix('config')->group(function (){
+    Route::prefix('config')->group(function () {
         Route::get('types', TypeLivewire::class)->name('dashboard.config.types');
         Route::get('mastros', MastLivewire::class)->name('dashboard.config.mastros');
     });
-    Route::prefix('projetos')->group(function (){
-        Route::get('/',ProjectLivewire::class)->name('dashboard.projects');
-        Route::get('/{projeto}/lotes',LoteLivewire::class)->name('dashboard.projects.lotes');
-        Route::get('lotes/{lote}/trechos',TrechoLivewire::class)->name('dashboard.lotes.trechos');
-        Route::get('lotes/trechos/{trecho}/canteiros',CourtyardLivewire::class)->name('dashboard.trechos.canteiros');
-        Route::get('lotes/trechos/canteiros/{canteiro}/setores',SectorLivewire::class)->name('dashboard.canteiros.setores');
+    Route::prefix('projetos')->group(function () {
+        Route::get('/', ProjectLivewire::class)->name('dashboard.projects');
+        Route::get('/{projeto}/lotes', LoteLivewire::class)->name('dashboard.projects.lotes');
+        Route::prefix('/lotes')->group(function () {
+            Route::get('/{lote}/trechos', TrechoLivewire::class)->name('dashboard.lotes.trechos');
+
+            Route::prefix('/trechos')->group(function () {
+                Route::get('/{trecho}/canteiros', CourtyardLivewire::class)->name('dashboard.trechos.canteiros');
+                Route::prefix('/canteiros')->group(function () {
+                    Route::get('/{canteiro}/setores', SectorLivewire::class)->name('dashboard.canteiros.setores');
+
+                    Route::prefix('/setor')->group(function () {
+                        Route::get('/{setor}/painel', [SectorLivewire::class, 'painel'])->name('dashboard.sector.painel');
+                        Route::get('{setor}/estoque',StockLivewire::class)->name('dashboard.sector.estoque');
+                    });
+                });
+            });
+        });
     });
-    }
-);
+});

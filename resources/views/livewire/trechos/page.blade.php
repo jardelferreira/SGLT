@@ -7,14 +7,12 @@
         </div>
     @endif
     <div class="form-group d-flex col-12">
-        <div class="col-4">
-            <input type="text" class="form-control" name="filter" id="filter" aria-describedby="helpId" placeholder="pequisar...">
+            <h1 class="display-2">Lote - {{$lote->name}}</h1>
         </div>
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
-       Adicionar trecho
-        </button>
-    </div>
-    <table class="table table-striped bg-light mt-2">
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+                <i class="fa fa-plus fa-lg" aria-hidden="true"> </i>  Cadastrar novo Trecho  
+            </button>
+    <table class="table table-striped bg-light mt-2 table-responsive">
         <thead>
             <tr>
                 <th>No.</th>
@@ -27,7 +25,7 @@
             <tr>
                 <td>{{ $value->id }}</td>
                 <td>{{ $value->name }}</td>
-                <td>
+                <td class="row">
                 <button data-toggle="modal" data-target="#updateModal" wire:click="edit({{ $value->id }})" class="btn btn-primary btn-sm">Edit</button>
                 <button wire:click="delete({{ $value->id }})" class="btn btn-danger btn-sm">Delete</button>
                 </td>

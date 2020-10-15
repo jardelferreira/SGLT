@@ -15,4 +15,9 @@ class Courtyard extends Model
     {
         return $this->hasMany(Sector::class);
     }
+
+    public function trecho()
+    {
+        return $this->belongsTo(Trecho::class,'trecho_id');
+    }
 }

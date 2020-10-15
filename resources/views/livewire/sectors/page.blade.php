@@ -7,14 +7,12 @@
         </div>
     @endif
     <div class="form-group d-flex col-12">
-        <div class="col-4">
-            <input type="text" class="form-control" name="filter" id="filter" aria-describedby="helpId" placeholder="pequisar...">
-        </div>
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
-       Adicionar Projeto
-        </button>
+            <h1 class="display-2">Canteiro - {{$canteiro->name}}</h1>
     </div>
-    <table class="table table-striped bg-light mt-2">
+            <button type="button" class="btn btn-success display-4" data-toggle="modal" data-target="#exampleModal">
+                <i class="fa fa-plus fa-lg" aria-hidden="true"> </i>  Cadastrar novo Setor   
+            </button>
+    <table class="table table-striped bg-light mt-2 table-responsive">
         <thead>
             <tr>
                 <th>No.</th>
@@ -29,7 +27,7 @@
                 <td>{{ $value->id }}</td>
                 <td>{{ $value->name }}</td>
                 <td>{{ $value->description }}</td>
-                <td>
+                <td class="row">
                 <button data-toggle="modal" data-target="#updateModal" wire:click="edit({{ $value->id }})" class="btn btn-primary btn-sm">Edit</button>
                 <button wire:click="delete({{ $value->id }})" class="btn btn-danger btn-sm">Delete</button>
                 </td>

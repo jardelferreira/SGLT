@@ -15,4 +15,9 @@ class Trecho extends Model
     {
         return $this->hasMany(Courtyard::class);
     }
+
+    public function lote()
+    {
+        return $this->belongsTo(Lote::class,'lote_id');
+    }
 }

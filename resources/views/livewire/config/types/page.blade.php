@@ -14,7 +14,7 @@
        Adicionar Tipos
         </button>
     </div>
-    <table class="table table-striped bg-light mt-2">
+    <table class="table table-striped bg-light mt-2 table-responsive">
         <thead>
             <tr>
                 <th>No.</th>
@@ -29,7 +29,7 @@
                 <td>{{ $value->id }}</td>
                 <td>{{ $value->name }}</td>
                 <td>{{ $value->definition }}</td>
-                <td>
+                <td  class="row">
                 <button data-toggle="modal" data-target="#updateModal" wire:click="edit({{ $value->id }})" class="btn btn-primary btn-sm">Edit</button>
                 <button wire:click="delete({{ $value->id }})" class="btn btn-danger btn-sm">Delete</button>
                 </td>

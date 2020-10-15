@@ -15,4 +15,9 @@ class Lote extends Model
     {
         return $this->hasMany(Trecho::class);
     }
+
+    public function projeto()
+    {
+        return $this->belongsTo(Project::class,'project_id');
+    }
 }
