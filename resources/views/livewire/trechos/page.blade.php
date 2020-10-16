@@ -7,7 +7,7 @@
         </div>
     @endif
     <div class="form-group d-flex col-12">
-            <h1 class="display-2">{{$lote->name}}</h1>
+            <h1 class="">Lote <i class="fa fa-arrow-right" aria-hidden="true"></i> - <strong>{{$lote->name}}</strong></h1><hr>
         </div>
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
                 <i class="fa fa-plus fa-lg" aria-hidden="true"> </i>  Cadastrar novo Trecho  

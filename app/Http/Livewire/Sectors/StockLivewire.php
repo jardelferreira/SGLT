@@ -17,6 +17,7 @@ class StockLivewire extends Component
     }
     public function render()
     {
+        $this->emit('dataTable');
         $this->stock = $this->sector->stock()->get();
         return view('livewire.sectors.stock.stock',[
             'setor' => $this->sector,
@@ -25,6 +26,7 @@ class StockLivewire extends Component
             'lote' => $this->sector->canteiro()->first()->trecho()->first()->lote()->first(),
             'projeto' => $this->sector->canteiro()->first()->trecho()->first()->lote()->first()->projeto()->first(),
         ]);
+
     }
     
     public function addEstoque()
@@ -53,6 +55,8 @@ class StockLivewire extends Component
         ]);
         $this->resetInputFields();
         $this->emit('closeModal');
+        $this->emit('dataTable');
+
 
         session()->flash(
             'message',
@@ -85,9 +89,13 @@ class StockLivewire extends Component
         $this->stock->delete();
         session()->flash('message', 'Produto Deleted Successfully.');
         $this->emit('closeModal');
+        $this->emit('dataTable');
+
     }
     public function cancel()
     {
         $this->emit('closeModal');
+        $this->emit('dataTable');
+
     }
 }

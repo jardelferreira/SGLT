@@ -10,6 +10,7 @@ class MastLivewire extends Component
     public $masts, $mast_id, $height, $weight, $description;
     public function render()
     {
+        $this->emit('dataTable');
         $this->masts = Mast::all();
         return view('livewire.config.masts.page');
     }
@@ -17,6 +18,7 @@ class MastLivewire extends Component
     public function create()
     {
         $this->resetInputFields();
+        $this->emit('dataTable');
     }
   
     private function resetInputFields(){
@@ -42,6 +44,7 @@ class MastLivewire extends Component
 
         $this->resetInputFields();
         $this->emit('closeModal');
+        $this->emit('dataTable');
     }
   
     public function edit($id)
@@ -51,6 +54,8 @@ class MastLivewire extends Component
         $this->height = $mast->height;
         $this->weight = $mast->weight;
         $this->description = $mast->description;
+
+        $this->emit('dataTable');
     }
      
   
@@ -60,9 +65,11 @@ class MastLivewire extends Component
         $mast->delete();
         session()->flash('message', 'Mast Deleted Successfully.');
         $this->emit('closeModal');
+        $this->emit('dataTable');
     }
     public function cancel()
     {
         $this->emit('closeModal');
+        $this->emit('dataTable');
     }
 }

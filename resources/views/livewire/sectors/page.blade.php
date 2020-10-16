@@ -7,9 +7,9 @@
         </div>
     @endif
     <div class="form-group d-flex col-12">
-            <h1 class="display-2"> {{$canteiro->name}}</h1>
+            <h1 class=""> Canteiro <i class="fa fa-arrow-right" aria-hidden="true"></i> - <strong>{{$canteiro->name}}</strong></h1><hr>
     </div>
-            <button type="button" class="btn btn-success display-4" data-toggle="modal" data-target="#exampleModal">
+            <button type="button" class="btn btn-success " data-toggle="modal" data-target="#exampleModal">
                 <i class="fa fa-plus fa-lg" aria-hidden="true"> </i>  Cadastrar novo Setor   
             </button>
     <table class="table table-striped bg-light mt-2 table-responsive">

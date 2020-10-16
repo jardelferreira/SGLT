@@ -17,13 +17,14 @@ class SectorLivewire extends Component
     }
     public function render()
     {
+        $this->emit('dataTable');
         $this->sectors = $this->canteiro->sectors()->get();
         return view('livewire.sectors.page');
     }
 
     public function painel(Sector $setor)
     {
-
+        $this->emit('dataTable');
         return view('livewire.sectors.painel', [
             'setor' => $setor->with('canteiro')->get()
         ]);
@@ -32,6 +33,7 @@ class SectorLivewire extends Component
     public function create()
     {
         $this->resetInputFields();
+        $this->emit('dataTable');
     }
 
 
@@ -61,6 +63,7 @@ class SectorLivewire extends Component
         $this->resetInputFields();
         $this->emit('closeModal');
         $this->emit('menuUpdate');
+        $this->emit('dataTable');
     }
 
     public function edit($id)
@@ -69,6 +72,7 @@ class SectorLivewire extends Component
         $this->sector_id = $this->sector->id;
         $this->name = $this->sector->name;
         $this->description = $this->sector->description;
+        $this->emit('dataTable');
     }
 
 
@@ -79,9 +83,11 @@ class SectorLivewire extends Component
         session()->flash('message', 'Sector Deleted Successfully.');
         $this->emit('closeModal');
         $this->emit('menuUpdate');
+        $this->emit('dataTable');
     }
     public function cancel()
     {
         $this->emit('closeModal');
+        $this->emit('dataTable');
     }
 }

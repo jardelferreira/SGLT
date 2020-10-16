@@ -18,32 +18,16 @@ class LoteLivewire extends Component
 
     public function render()
     {
+        $this->emit('dataTable');
         $this->lotes = $this->projeto->lotes()->get();
         return view('livewire.lotes.page');
     }
 
-    public function getSubmenu(array $menu, $model)
-    {
-        $modelo = [
-            'text' => $model->name,
-            'url' => '#',
-            'submenu' => [
-                    [
-                        'text' => 'Gerenciar',
-                        'url' => '#'
-                    ]
-                ]
-                ];   
-                array_push($menu,$modelo);
-                foreach ($menu as $key => $value) {
-                  
-                }        
-       
-    }
 
     public function create()
     {
         $this->resetInputFields();
+        $this->emit('dataTable');
     }
   
     private function resetInputFields(){
@@ -67,6 +51,7 @@ class LoteLivewire extends Component
         $this->resetInputFields();
         $this->emit('closeModal');
         $this->emit('menuUpdate');
+        $this->emit('dataTable');
 
     }
   
@@ -75,6 +60,7 @@ class LoteLivewire extends Component
         $lote = Lote::find($id);
         $this->lote_id = $lote->id;
         $this->name = $lote->name;
+        $this->emit('dataTable');
     }
      
   
@@ -85,10 +71,12 @@ class LoteLivewire extends Component
         session()->flash('message', 'Lote Deleted Successfully.');
         $this->emit('closeModal');
         $this->emit('menuUpdate');
+        $this->emit('dataTable');
 
     }
     public function cancel()
     {
         $this->emit('closeModal');
+        $this->emit('dataTable');
     }
 }

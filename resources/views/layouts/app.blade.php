@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 @stop
 
+@section(' plugins.Datatables ', true)
 @section('js')
     @livewireScripts
     <script type="text/javascript">
@@ -38,22 +39,14 @@
         livewire.on('menuUpdate', () => {
             location.reload();
         })
-
+        livewire.on('dataTable',()=>{
+            $('table').DataTable();
+        })
     </script>
     <script>
-        // $(document).ready(function() {
-        //     $('table').DataTable();
-        // });
-        $(document).ready( function () {
-			$('table')
-				.addClass( 'nowrap' )
-				.dataTable( {
-					responsive: true,
-					columnDefs: [
-						{ targets: [-1, -3], className: 'dt-body-right' }
-					]
-				} );
-		} );
+        $(document).ready(function() {
+            $('table').DataTable();
+        });
+
     </script>
 @stop
-@section(' plugins.Datatables ', true)

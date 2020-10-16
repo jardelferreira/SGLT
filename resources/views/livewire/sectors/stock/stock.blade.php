@@ -10,7 +10,7 @@
     <blockquote class="blockquote">
     <p class="mb-0"><i class="fas fa-tachometer-fastest    "></i>Estoque de {{$sector->name}} 
         <i class="fa fa-arrow-right" aria-hidden="true"></i> {{$canteiro->name}}
-        <button data-toggle="modal" data-target="#createModal" wire:click="create()" class="btn btn-success btn-sm"> - Adicionar novo <i class="fa fa-plus" aria-hidden="true"></i></button>
+        <button data-toggle="modal" data-target="#createModal" wire:click="create()" class="btn btn-success btn-sm"> - Cadastrar Material <i class="fa fa-plus" aria-hidden="true"></i></button>
     </p>
         <footer class="blockquote-footer"> <cite title="Source Title">{{$sector->canteiro->trecho->name}}/
              {{$lote->name}}/ {{$projeto->name}}</cite></footer>
@@ -25,6 +25,7 @@
                 <th>Código</th>
                 <th>Und.</th>
                 <th>Qtd.</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody> 

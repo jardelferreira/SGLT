@@ -15,12 +15,14 @@ class TrechoLivewire extends Component
     }
     public function render()
     {
+        $this->emit('dataTable');
         $this->trechos = $this->lote->trechos()->get();
         return view('livewire.trechos.page');
     }
     public function create()
     {
         $this->resetInputFields();
+        $this->emit('dataTable');
     }
   
     private function resetInputFields(){
@@ -44,6 +46,7 @@ class TrechoLivewire extends Component
         $this->resetInputFields();
         $this->emit('closeModal');
         $this->emit('menuUpdate');
+        $this->emit('dataTable');
 
     }
   
@@ -52,6 +55,7 @@ class TrechoLivewire extends Component
         $lote = Trecho::find($id);
         $this->trecho_id = $lote->id;
         $this->name = $lote->name;
+        $this->emit('dataTable');
     }
      
   
@@ -62,10 +66,12 @@ class TrechoLivewire extends Component
         session()->flash('message', 'Trecho Deleted Successfully.');
         $this->emit('closeModal');
         $this->emit('menuUpdate');
+        $this->emit('dataTable');
 
     }
     public function cancel()
     {
         $this->emit('closeModal');
+        $this->emit('dataTable');
     }
 }

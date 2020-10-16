@@ -7,7 +7,8 @@
         </div>
     @endif
     <div class="form-group d-flex col-12">
-        <h1 class="display-2">Meus Projetos</h1>
+        <h1 class=""><strong> Meus Projetos </strong></h1>
+        <hr>
     </div>
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
                 <i class="fa fa-plus fa-lg" aria-hidden="true"> </i>  Cadastrar novo Projeto

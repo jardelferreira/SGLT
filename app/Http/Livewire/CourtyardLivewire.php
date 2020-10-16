@@ -15,12 +15,14 @@ class CourtyardLivewire extends Component
     }
     public function render()
     {
+        $this->emit('dataTable');
         $this->courtyards = $this->trecho->canteiros()->get();
         return view('livewire.courtyards.page');
     }
     public function create()
     {
         $this->resetInputFields();
+        $this->emit('dataTable');
     }
   
     private function resetInputFields(){
@@ -48,6 +50,7 @@ class CourtyardLivewire extends Component
         $this->resetInputFields();
         $this->emit('closeModal');
         $this->emit('menuUpdate');
+        $this->emit('dataTable');
 
     }
   
@@ -58,6 +61,7 @@ class CourtyardLivewire extends Component
         $this->name = $trecho->name;
         $this->description = $trecho->description;
         $this->location = $trecho->location;
+        $this->emit('dataTable');
     }
      
   
@@ -68,10 +72,12 @@ class CourtyardLivewire extends Component
         session()->flash('message', 'Courtyard Deleted Successfully.');
         $this->emit('closeModal');
         $this->emit('menuUpdate');
+        $this->emit('dataTable');
 
     }
     public function cancel()
     {
         $this->emit('closeModal');
+        $this->emit('dataTable');
     }
 }

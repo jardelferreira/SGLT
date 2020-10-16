@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createModalLabel">{{$sector->name}}</h5>
+                <h5 class="modal-title" id="createModalLabel">Cadastrar Material em <strong>{{$sector->name}}</strong></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                      <span aria-hidden="true close-btn">×</span>
                 </button>

@@ -11,12 +11,14 @@ class TypeLivewire extends Component
 
     public function render()
     {
+        $this->emit('dataTable');
         $this->types = Type::all();
         return view('livewire.config.types.page');
     }
     public function create()
     {
         $this->resetInputFields();
+        $this->emit('dataTable');
     }
   
     private function resetInputFields(){
@@ -43,6 +45,7 @@ class TypeLivewire extends Component
 
         $this->resetInputFields();
         $this->emit('closeModal');
+        $this->emit('dataTable');
     }
   
     public function edit($id)
@@ -52,6 +55,7 @@ class TypeLivewire extends Component
         $this->name = $type->name;
         $this->definition = $type->definition;
         $this->description = $type->description;
+        $this->emit('dataTable');
     }
      
   
@@ -61,9 +65,11 @@ class TypeLivewire extends Component
         $type->delete();
         session()->flash('message', 'Type Deleted Successfully.');
         $this->emit('closeModal');
+        $this->emit('dataTable');
     }
     public function cancel()
     {
         $this->emit('closeModal');
+        $this->emit('dataTable');
     }
 }

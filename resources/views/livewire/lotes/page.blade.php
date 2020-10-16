@@ -6,7 +6,7 @@
           {{ session('message') }}
         </div>
     @endif
-    <h1 class="display-2">{{$projeto->name}}</h1>
+    <h1 class="">Projeto <i class="fa fa-arrow-right" aria-hidden="true"></i> - <strong>{{$projeto->name}}</strong></h1><hr>
     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
         <i class="fa fa-plus fa-lg" aria-hidden="true"> </i>  Cadastrar novo Lote
          </button>
@@ -15,6 +15,7 @@
             <tr>
                 <th>No.</th>
                 <th>Nome</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody> 

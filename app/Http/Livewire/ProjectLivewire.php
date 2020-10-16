@@ -11,6 +11,7 @@ class ProjectLivewire extends Component
 
     public function render()
     {
+        $this->emit('dataTable');
         $this->projects = Project::all();
         return view('livewire.projects.page');
     }
@@ -18,6 +19,7 @@ class ProjectLivewire extends Component
     public function create()
     {
         $this->resetInputFields();
+        $this->emit('dataTable');
     }
   
   
@@ -53,6 +55,7 @@ class ProjectLivewire extends Component
         $this->project_id = $project->id;
         $this->name = $project->name;
         $this->description = $project->description;
+        $this->emit('dataTable');
 
     }
      
@@ -64,9 +67,11 @@ class ProjectLivewire extends Component
         session()->flash('message', 'Project Deleted Successfully.');
         $this->emit('closeModal');
         $this->emit('menuUpdate');
+        $this->emit('dataTable');
     }
     public function cancel()
     {
         $this->emit('closeModal');
+        $this->emit('dataTable');
     }
 }
