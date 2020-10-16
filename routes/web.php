@@ -6,6 +6,7 @@ use App\Http\Livewire\MastLivewire;
 use App\Http\Livewire\ProjectLivewire;
 use App\Http\Livewire\SectorLivewire;
 use App\Http\Livewire\Sectors\StockLivewire;
+use App\Http\Livewire\Trechos\StockLivewire as TrechoStock;
 use App\Http\Livewire\TrechoLivewire;
 use App\Http\Livewire\TypeLivewire;
 use Illuminate\Support\Facades\Route;
@@ -44,6 +45,8 @@ Route::prefix('dashboard')->middleware(['auth:sanctum', 'verified'])->group(func
 
             Route::prefix('/trechos')->group(function () {
                 Route::get('/{trecho}/canteiros', CourtyardLivewire::class)->name('dashboard.trechos.canteiros');
+                Route::get('{trecho}/estoque',TrechoStock::class)->name('dashboard.sector.estoque');
+
                 Route::prefix('/canteiros')->group(function () {
                     Route::get('/{canteiro}/setores', SectorLivewire::class)->name('dashboard.canteiros.setores');
 

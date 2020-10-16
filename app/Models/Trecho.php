@@ -20,4 +20,9 @@ class Trecho extends Model
     {
         return $this->belongsTo(Lote::class,'lote_id');
     }
+    
+    public function stock()
+    {
+        return $this->hasMany(Stock::class);
+    }
 }

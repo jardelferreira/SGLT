@@ -9,4 +9,9 @@ class Stock extends Model
 {
     use HasFactory;
     protected $fillable = ['name', 'item', 'cod', 'courtyard_id', 'und', 'description', 'qtd', 'trecho_id', 'lote_id', 'project_id', 'sector_id'];
+
+    public function canteiroDono()
+    {
+        return $this->belongsTo(Courtyard::class,'courtyard_id');
+    }
 }
