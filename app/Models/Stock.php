@@ -14,4 +14,9 @@ class Stock extends Model
     {
         return $this->belongsTo(Courtyard::class,'courtyard_id');
     }
+
+    public function trechoDono()
+    {
+        return $this->belongsTo(Trecho::class,'trecho_id');
+    }
 }

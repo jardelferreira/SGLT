@@ -235,6 +235,7 @@ return [
             'text' => 'search',
             'search' => true,
             'topnav' => true,
+            'classes' => 'pb-4',
         ],
         // [
         //     'text' => 'blog',
