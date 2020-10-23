@@ -7,6 +7,8 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
 
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.6.0/dist/alpine.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.css"/>
+ 
 @stop
 
 @section('content')
@@ -26,9 +28,9 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 @stop
 
-@section(' plugins.Datatables ', true)
 @section('js')
     @livewireScripts
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.js"></script>
     <script type="text/javascript">
         livewire.on('closeModal', () => {
             $('.modal').modal('hide');
