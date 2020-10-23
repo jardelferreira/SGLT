@@ -26,8 +26,8 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 @stop
 
-@section(' plugins.Datatables ', true)
 @section('js')
+@section(' plugins.Datatables ', true)
     @livewireScripts
     <script type="text/javascript">
         livewire.on('closeModal', () => {

@@ -422,7 +422,7 @@ return [
             'files' => [
                 [
                     'type' => 'css',
-                    'asset' => false,
+                    'asset' => true,
                     'location' => '//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css',
                 ],
                 [
