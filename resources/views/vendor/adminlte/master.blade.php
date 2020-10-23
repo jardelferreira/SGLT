@@ -85,7 +85,7 @@
 
     {{-- Custom Scripts --}}
     @yield('adminlte_js')
-
+    @section(' plugins.Datatables ', true)
 </body>
 
 </html>
