@@ -18,4 +18,9 @@ class Project extends Model
     {
         return $this->hasMany(Lote::class);
     }
+
+    public function stock()
+    {
+        return $this-> hasMany(Stock::class);
+    }
 }

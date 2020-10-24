@@ -8,6 +8,7 @@ use App\Http\Livewire\SectorLivewire;
 use App\Http\Livewire\Sectors\StockLivewire;
 use App\Http\Livewire\Lotes\StockLivewire as LoteStock;
 use App\Http\Livewire\Trechos\StockLivewire as TrechoStock;
+use App\Http\Livewire\Project\StockLivewire as ProjetoStock;
 use App\Http\Livewire\TrechoLivewire;
 use App\Http\Livewire\TypeLivewire;
 use Illuminate\Support\Facades\Route;
@@ -41,6 +42,7 @@ Route::prefix('dashboard')->middleware(['auth:sanctum', 'verified'])->group(func
     Route::prefix('projetos')->group(function () {
         Route::get('/', ProjectLivewire::class)->name('dashboard.projects');
         Route::get('/{projeto}/lotes', LoteLivewire::class)->name('dashboard.projects.lotes');
+        Route::get('/{projeto}/estoque', ProjetoStock::class)->name('dashboard.projects.estoque');
         Route::prefix('/lotes')->group(function () {
             Route::get('/{lote}/trechos', TrechoLivewire::class)->name('dashboard.lotes.trechos');
             Route::get('/{lote}/estoque', LoteStock::class)->name('dashboard.lotes.estoque');
