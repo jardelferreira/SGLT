@@ -20,8 +20,9 @@ class MastLivewire extends Component
         $this->resetInputFields();
         $this->emit('dataTable');
     }
-  
+    
     private function resetInputFields(){
+        $this->mast_id = '';
         $this->height = '';
         $this->weight = '';
         $this->description = '';

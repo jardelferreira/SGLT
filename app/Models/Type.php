@@ -9,5 +9,10 @@ class Type extends Model
 {
     use HasFactory;
 
-    protected $fillable  = ['name','description','model','sub','definition'];
+    protected $fillable  = ['name', 'description', 'model', 'sub', 'definition'];
+
+    public function models()
+    {
+        return ['Torres'];
+    }
 }

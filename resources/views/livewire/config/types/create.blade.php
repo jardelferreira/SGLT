@@ -24,7 +24,9 @@
                       <label for="model">Aplicação</label>
                       <select class="form-control" name="model" id="model" wire:model="model" required>
                         <option value=""  >Selecione Aplicação</option>
-                        <option value="towers"  >Torres</option>
+                        @foreach ($models_type as $value)
+                        <option value="{{$value}}"  >{{$value}}</option>
+                        @endforeach
                       </select>
                     </div>
                     <div class="form-group">

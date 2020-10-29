@@ -7,7 +7,13 @@ use Livewire\Component;
 
 class TypeLivewire extends Component
 {
-    public $types, $definition, $name, $type_id, $sub, $model, $description;
+    public $types, $definition, $name, $type_id, $sub, $model, $description, $models_type;
+
+    public function mount(Type $type)
+    {
+        $this->types = $type->all();
+        $this->models_type = $type->models();
+    }
 
     public function render()
     {
