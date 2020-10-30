@@ -23,4 +23,9 @@ class Project extends Model
     {
         return $this-> hasMany(Stock::class);
     }
+
+    public function torres()
+    {
+        return $this->hasMany(Tower::class);
+    }
 }

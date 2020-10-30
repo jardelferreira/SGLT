@@ -16,6 +16,9 @@ class CreateTowersTable extends Migration
         Schema::create('towers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->foreignId('trecho_id')->references('id')->on('trechos')->onDelete('cascade');
+            $table->foreignId('lote_id')->references('id')->on('lotes')->onDelete('cascade');
+            $table->foreignId('project_id')->references('id')->on('projects')->onDelete('cascade');
             $table->timestamps();
         });
         Schema::create('mast_towers', function(Blueprint $table){

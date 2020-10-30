@@ -9,7 +9,7 @@ class Lote extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name','project_id'];
+    protected $fillable = ['name','project_id', 'id'];
 
     public function trechos()
     {
