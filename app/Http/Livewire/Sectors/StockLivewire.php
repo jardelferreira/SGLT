@@ -9,7 +9,7 @@ use Livewire\Component;
 class StockLivewire extends Component
 {
     public $stock, $sector, $stock_id;
-    public $name,$item,$cod,$qtd,$description,$und;
+    public $name,$item,$cod,$qtd,$description,$und, $item_id;
 
     public function mount(Sector $setor)
     {
@@ -97,5 +97,11 @@ class StockLivewire extends Component
         $this->emit('closeModal');
         $this->emit('dataTable');
 
+    }
+
+    public function confirmDelete(Stock $stock)
+    {
+     $this->name = $stock->name;
+     $this->item_id = $stock->id;   
     }
 }

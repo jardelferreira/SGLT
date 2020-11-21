@@ -144,25 +144,10 @@ class AppServiceProvider extends ServiceProvider
                                                         'submenu' => [
                                                             [
                                                                 'text' => "Estoque {$sector->name}",
-                                                                'url' => "#",
+                                                                'url' => "dashboard/projetos/lotes/trechos/canteiros/setor/{$sector->id}/estoque",
                                                                 'icon_color' => 'aqua',
                                                                 'icon' => "fas fa-boxes",
-                                                                'submenu' => [
-                                                                    [
-                                                                        'text' => "Consulta",
-                                                                        'icon_color' => 'aqua',
-                                                                        'url'  => "dashboard/projetos/lotes/trechos/canteiros/setor/{$sector->id}/estoque"
-                                                                    ], [
-                                                                        'text' => "Entrada",
-                                                                        'icon_color' => 'lime',
-                                                                        'url' => "dashboard/projetos/lotes/trechos/canteiros/setor/{$sector->id}/estoque/entrada"
-                                                                    ], [
-                                                                        'text' => "Saída",
-                                                                        'icon_color' => 'red',
-                                                                        'url'  => "dashboard/projetos/lotes/trechos/canteiros/setor/{$sector->id}/estoque/saida"
-                                                                    ]
-                                                                ]
-                                                            ],
+                                                                ],
                                                             [
                                                                 'text' => "Gerenciar {$sector->name}",
                                                                 'url' => "dashboard/projetos/lotes/trechos/canteiros/setor/{$sector->id}/painel"
@@ -183,7 +168,7 @@ class AppServiceProvider extends ServiceProvider
             $event->menu->add($menu);
             $event->menu->add([
                 'text'       => 'Rodapé',
-                'icon_color' => 'yellow',
+                'classes' => 'bg-light',
                 'url'        => '#',
 
             ]);

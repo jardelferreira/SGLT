@@ -1,6 +1,7 @@
 <div>
     @include('livewire.sectors.stock.create')
     @include('livewire.sectors.stock.update')
+    @include('livewire.sectors.stock.delete')
     @if (session()->has('message'))
         <div class="alert alert-success" style="margin-top:30px;">
           {{ session('message') }}
@@ -38,8 +39,9 @@
                 <td>{{ $value->und}}</td>
                 <td>{{ $value->qtd}}</td>
                 <td class="row">
-                    
-                    <button wire:click="delete({{ $value->id}})" class="btn btn-danger btn-sm">Delete</button>
+                    <button wire:click="photo()" class="btn btn-info btn-sm mr-1"><i class="fas fa-image fa-fw"></i></button>
+                    <button data-toggle="modal" data-target="#deleteModal" wire:click="confirmDelete({{ $value->id}})" class="btn mr-1 btn-danger btn-sm"><i class="fas fa-trash-alt fa-fw"></i></button>
+                    <button wire:click="delete({{ $value->id}})" class="btn mr-1 btn-danger btn-sm">Delete</button>
                 </td>
             </tr>
             @endforeach
