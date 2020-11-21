@@ -46,7 +46,7 @@ class AppServiceProvider extends ServiceProvider
                         'icon_color' => 'lime',
                         'url' => 'dashboard/projetos'
                     ]
-                ]
+                ],
             ];
             if ($projects = Project::all()) {
                 foreach ($projects as $key => $project) {
@@ -68,7 +68,7 @@ class AppServiceProvider extends ServiceProvider
                             'url' => "dashboard/projetos/{$project->id}/torres",
                             'icon_color' => 'cyan'
                         ]);
-                        array_push($menu['submenu'][$key + 1]['submenu'],[
+                        array_push($menu['submenu'][$key + 1]['submenu'], [
                             'text' => "Estoque {$project->name}",
                             'icon' => "fas fa-boxes",
                             'url' => "dashboard/projetos/{$project->id}/estoque",
@@ -81,15 +81,15 @@ class AppServiceProvider extends ServiceProvider
                                 'url' => "#",
                                 'icon_color' => 'cyan',
                                 'submenu' => []
-                                ]);
-                                if ($trechos = $lote->trechos()) {
-                                   // dd($trechos->get());
+                            ]);
+                            if ($trechos = $lote->trechos()) {
+                                // dd($trechos->get());
                                 array_push($menu['submenu'][$key + 1]['submenu'][$key2 + 3]['submenu'], [
                                     'text' => "Gerenciar Trechos",
                                     'url' => "dashboard/projetos/lotes/{$lote->id}/trechos",
                                     'icon_color' => 'red',
                                 ]);
-                                array_push($menu['submenu'][$key + 1]['submenu'][$key2 + 3]['submenu'],[
+                                array_push($menu['submenu'][$key + 1]['submenu'][$key2 + 3]['submenu'], [
                                     'text' => "Estoque {$lote->name}",
                                     'icon' => "fas fa-boxes",
                                     'url' => "dashboard/projetos/lotes/{$lote->id}/estoque",
@@ -109,7 +109,7 @@ class AppServiceProvider extends ServiceProvider
                                             'icon_color' => 'yellow',
                                             'url' => "dashboard/projetos/lotes/trechos/{$trecho->id}/canteiros",
                                         ]);
-                                        array_push($menu['submenu'][$key + 1]['submenu'][$key2 + 3]['submenu'][$key3 + 2]['submenu'],[
+                                        array_push($menu['submenu'][$key + 1]['submenu'][$key2 + 3]['submenu'][$key3 + 2]['submenu'], [
                                             'text' => "Estoque {$trecho->name}",
                                             'icon' => "fas fa-boxes",
                                             'url' => "dashboard/projetos/lotes/trechos/{$trecho->id}/estoque",
@@ -130,7 +130,7 @@ class AppServiceProvider extends ServiceProvider
                                                     'icon_color' => 'red',
                                                     'url' => "dashboard/projetos/lotes/trechos/canteiros/{$canteiro->id}/setores",
                                                 ]);
-                                                array_push($menu['submenu'][$key + 1]['submenu'][$key2 + 3]['submenu'][$key3 + 2]['submenu'][$key4 + 2]['submenu'],[
+                                                array_push($menu['submenu'][$key + 1]['submenu'][$key2 + 3]['submenu'][$key3 + 2]['submenu'][$key4 + 2]['submenu'], [
                                                     'text' => "Estoque {$canteiro->name}",
                                                     'icon' => "fas fa-boxes",
                                                     'url' => "dashboard/projetos/lotes/trechos/canteiros/{$canteiro->id}/estoque",
@@ -178,8 +178,15 @@ class AppServiceProvider extends ServiceProvider
                         }
                     }
                 }
+                
             }
             $event->menu->add($menu);
+            $event->menu->add([
+                'text'       => 'Rodapé',
+                'icon_color' => 'yellow',
+                'url'        => '#',
+
+            ]);
         });
     }
 }
