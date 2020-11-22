@@ -427,9 +427,54 @@ return [
                     'location' => '//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css',
                 ],
                 [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => '//cdn.datatables.net/buttons/1.6.4/css/buttons.dataTables.min.css',
+                ],
+                [
                     'type' => 'js',
                     'asset' => true,
                     'location' => '//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => '//cdn.datatables.net/buttons/1.6.4/js/dataTables.buttons.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => '//cdn.datatables.net/buttons/1.6.4/js/buttons.flash.min.js'
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => '//cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js'
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => '//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js'
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => '//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js'
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => '//cdn.datatables.net/buttons/1.6.4/js/buttons.html5.min.js'
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => '//cdn.datatables.net/buttons/1.6.4/js/buttons.print.min.js'
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => '//cdn.datatables.net/buttons/1.6.4/js/buttons.colVis.min.js'
                 ],
             ],
         ],

@@ -7,8 +7,8 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
 
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.6.0/dist/alpine.js" defer></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.css"/>
- 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.css" />
+
 @stop
 
 @section('content')
@@ -16,7 +16,7 @@
     <!-- Page Content -->
     <main>
         {{ $slot }}
-        
+
     </main>
 
 
@@ -30,7 +30,6 @@
 
 @section('js')
     @livewireScripts
-    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.js"></script>
     <script type="text/javascript">
         livewire.on('closeModal', () => {
             $('.modal').modal('hide');
@@ -41,13 +40,29 @@
         livewire.on('menuUpdate', () => {
             location.reload();
         })
-        livewire.on('dataTable',()=>{
-            $('table').DataTable();
+        livewire.on('dataTable', () => {
+            $('table').DataTable({
+                dom: 'Bfrtip',
+                lengthMenu: [
+                    [10, 25, 50,100, -1],
+                    ['10 linhas', '25 linhas', '50 linhas','100 lihas','mostrar tudo']
+                ],
+                buttons: ['pageLength','colvis','copy', 'csv', 'excel','pdf','print']
+            });
         })
+
     </script>
     <script>
         $(document).ready(function() {
-            $('table').DataTable();
+            $('table').DataTable({
+                dom: 'Bfrtip',
+                lengthMenu: [
+                    [10, 25, 50,100, -1],
+                    ['10 linhas', '25 linhas', '50 linhas','100 lihas','mostrar tudo']
+                ],
+                buttons: ['pageLength','colvis','copy', 'csv', 'excel','pdf','print']
+            });
+
         });
 
     </script>

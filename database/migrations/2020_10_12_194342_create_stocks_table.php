@@ -20,6 +20,7 @@ class CreateStocksTable extends Migration
             $table->string('cod');
             $table->string('und')->nullable();
             $table->string('description')->nullable();
+            $table->string('path')->nullable();
             $table->float('qtd',8,2,true);
             $table->foreignId('project_id')->references('id')->on('projects')->onDelete('cascade');
             $table->foreignId('lote_id')->references('id')->on('lotes')->onDelete('cascade');

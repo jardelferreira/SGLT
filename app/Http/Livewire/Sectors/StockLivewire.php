@@ -5,11 +5,14 @@ namespace App\Http\Livewire\Sectors;
 use App\Models\Sector;
 use App\Models\Stock;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class StockLivewire extends Component
 {
-    public $stock, $sector, $stock_id;
-    public $name,$item,$cod,$qtd,$description,$und, $item_id;
+    use WithFileUploads;
+
+    public $stock, $sector, $stock_id,$product;
+    public $name,$item,$cod,$qtd,$description,$und, $item_id, $photo,$storage;
 
     public function mount(Sector $setor)
     {
@@ -55,7 +58,7 @@ class StockLivewire extends Component
         ]);
         $this->resetInputFields();
         $this->emit('closeModal');
-        $this->emit('dataTable');
+        // $this->emit('dataTable');
 
 
         session()->flash(
@@ -89,7 +92,7 @@ class StockLivewire extends Component
         $this->stock->delete();
         session()->flash('message', 'Produto Deleted Successfully.');
         $this->emit('closeModal');
-        $this->emit('dataTable');
+        //$this->emit('dataTable');
 
     }
     public function cancel()
@@ -103,5 +106,52 @@ class StockLivewire extends Component
     {
      $this->name = $stock->name;
      $this->item_id = $stock->id;   
+    }
+
+    public function loadProduct($id)
+    {
+       $this->product = Stock::find($id);
+    }
+
+    public function save()
+    {
+        $this->validate([
+            'photo' => 'image|max:2048', // 2MB Max
+        ],[
+            'photo.image' => 'Tipo de arquivo não compatível!',
+            'photo.max'  => 'Tamanho máximo excedido, limite de 2mb'
+        ]);
+        
+        if(!($this->product)){
+            session()->flash('message', 'Produto não encontrado!');
+        }else{
+           $this->storage = $this->photo->store("public/projects/{$this->product->projeto()->first()->name}/products");
+           
+            $this->product->update(['path' => substr($this->storage,6)]);
+
+            $this->emit('closeModal');
+            session()->flash('message', 'Imagem cadastrada com succsso!');
+        }
+    }
+
+    public function addItem()
+    {
+        $this->product->qtd += $this->qtd;
+        $this->product->update();
+        $this->emit('closeModal');
+            session()->flash('message', "Foram adicionados {$this->qtd} {$this->product->und} de {$this->product->name}!");
+    }
+
+    public function rmItem()
+    {
+        if($this->product->qtd > $this->qtd){
+            $this->product->qtd -= $this->qtd;
+            $this->product->update();
+            $this->emit('closeModal');
+                session()->flash('message', "Foram removidos {$this->qtd} {$this->product->und} de {$this->product->name}!");
+        }else{
+            session()->flash('message', "Você não tem itens suficientes!");
+        }
+
     }
 }
