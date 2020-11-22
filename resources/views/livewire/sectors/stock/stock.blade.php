@@ -20,7 +20,7 @@
              {{$lote->name}}/ {{$projeto->name}}</cite></footer>
     </blockquote>
     <hr />
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped ">
         <thead>
             <tr>
                 <th>No.</th>
@@ -42,10 +42,10 @@
                 <td>{{ $value->und}}</td>
                 <td>{{ $value->qtd}}</td>
                 <td class="row">
-                    <button data-toggle="modal" wire:click='loadProduct({{$value->id}})' data-target="#addModal"type="button" class="btn btn-sm mr-1 btn-success"><i class="fas fa-plus-circle   fa-fw"></i></button>
-                    <button data-toggle="modal" wire:click='loadProduct({{$value->id}})' data-target="#rmModal" type="button" class="btn btn-sm mr-1 btn-danger"><i class="fas fa-minus-circle   fa-fw"></i></button>
-                    <button data-toggle="modal" wire:click='loadProduct({{$value->id}})' data-target="#photoModal"  class="btn mr-1 btn-info btn-sm"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
-                    <button data-toggle="modal" data-target="#deleteModal" wire:click="confirmDelete({{ $value->id}})" class="btn mr-1 btn-danger btn-sm"><i class="fas fa-trash-alt fa-fw"></i></button>
+                    <button data-toggle="modal" wire:click='loadProduct({{$value->id}})' data-target="#addModal"type="button" class="btn btn-sm mr-1 my-1 btn-success"><i class="fas fa-plus-circle   fa-fw"></i></button>
+                    <button data-toggle="modal" wire:click='loadProduct({{$value->id}})' data-target="#rmModal" type="button" class="btn btn-sm mr-1 my-1 btn-danger"><i class="fas fa-minus-circle   fa-fw"></i></button>
+                    <button data-toggle="modal" wire:click='loadProduct({{$value->id}})' data-target="#photoModal"  class="btn mr-1 my-1 btn-info btn-sm"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
+                    <button data-toggle="modal" data-target="#deleteModal" wire:click="confirmDelete({{ $value->id}})" class="btn mr-1 my-1 btn-danger btn-sm"><i class="fas fa-trash-alt fa-fw"></i></button>
                     {{-- <button wire:click="delete({{ $value->id}})" class="btn mr-1 btn-danger btn-sm">Delete</button> --}}
                 </td>
             </tr>

@@ -53,6 +53,20 @@
                 buttons: ['pageLength','colvis','copy', 'csv', 'excel','pdf','print']
             });
         })
+        
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('table').DataTable({
+                dom: 'Bfrtip',
+                lengthMenu: [
+                    [10, 25, 50,100, -1],
+                    ['10 linhas', '25 linhas', '50 linhas','100 lihas','mostrar tudo']
+                ],
+                buttons: ['pageLength','colvis','copy', 'csv', 'excel','pdf','print']
+            });
+
+        });
 
     </script>
 @stop
