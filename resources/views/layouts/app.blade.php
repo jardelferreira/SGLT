@@ -5,10 +5,14 @@
 @section('content_header')
     @livewireStyles
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
-    {{-- <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/> --}}
+    <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.6.0/dist/alpine.js" defer></script>
+
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.css" />
     
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.css"/>
+ 
 
 @stop
 
@@ -17,7 +21,7 @@
     <!-- Page Content -->
     <main>
         {{ $slot }}
-
+        
     </main>
 
 
@@ -32,7 +36,11 @@
 @section('js')
 
     @livewireScripts
+<<<<<<< HEAD
     {{-- <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.js"></script> --}}
+=======
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.js"></script>
+>>>>>>> ba467b353b240d534f0378951c3f39f6ed2fdfa7
     <script type="text/javascript">
         livewire.on('closeModal', () => {
             $('.modal').modal('hide');
