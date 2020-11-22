@@ -14,7 +14,7 @@
                 <footer class="blockquote-footer"> <cite title="Source Title">{{$projeto->name}}</cite></footer>
             </blockquote>
             <hr />
-            <table class="table table-striped bg-light table-responsive">
+            <table class="table table-striped bg-light">
                 <thead>
                     <tr>
                         <th>No.</th>

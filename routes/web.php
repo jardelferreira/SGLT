@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Livewire\CourtyardLivewire;
+use App\Http\Livewire\Courtyards\StockLivewire as CourtyardsStockLivewire;
 use App\Http\Livewire\LoteLivewire;
 use App\Http\Livewire\MastLivewire;
 use App\Http\Livewire\ProjectLivewire;
@@ -55,6 +56,7 @@ Route::prefix('dashboard')->middleware(['auth:sanctum', 'verified'])->group(func
 
                 Route::prefix('/canteiros')->group(function () {
                     Route::get('/{canteiro}/setores', SectorLivewire::class)->name('dashboard.canteiros.setores');
+                    Route::get('/{canteiro}/estoque', CourtyardsStockLivewire::class)->name('dashboard.canteiros.estoque');
 
                     Route::prefix('/setor')->group(function () {
                         Route::get('/{setor}/painel', [SectorLivewire::class, 'painel'])->name('dashboard.sector.painel');

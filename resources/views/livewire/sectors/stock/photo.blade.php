@@ -8,15 +8,13 @@
                 </button>
             </div>
             <div class="modal-body p-4" id="result">
-                @if ($photo)
-            @endif
-            @if ($product)
-            Imagem do produto:
-            <img src="{{ asset("storage/{$product->path}") }}">
-            @else
             @if ($photo)
             Imagem preview:
             <img src="{{ $photo->temporaryUrl() }}">
+            @else
+            @if ($product)
+            Imagem do produto:
+            <img src="{{ asset("storage/{$product->path}") }}">
             @else
             <h6>Produto sem imagem</h6>
             @endif

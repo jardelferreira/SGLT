@@ -127,20 +127,20 @@ class AppServiceProvider extends ServiceProvider
                                             if ($sectors = $canteiro->sectors()) {
                                                 array_push($menu['submenu'][$key + 1]['submenu'][$key2 + 3]['submenu'][$key3 + 2]['submenu'][$key4 + 2]['submenu'], [
                                                     'text' => "Gerenciar Setores",
-                                                    'icon_color' => 'red',
+                                                    'icon_color' => 'green',
                                                     'url' => "dashboard/projetos/lotes/trechos/canteiros/{$canteiro->id}/setores",
                                                 ]);
                                                 array_push($menu['submenu'][$key + 1]['submenu'][$key2 + 3]['submenu'][$key3 + 2]['submenu'][$key4 + 2]['submenu'], [
                                                     'text' => "Estoque {$canteiro->name}",
                                                     'icon' => "fas fa-boxes",
                                                     'url' => "dashboard/projetos/lotes/trechos/canteiros/{$canteiro->id}/estoque",
-                                                    'icon_color' => 'red'
+                                                    'icon_color' => 'green'
                                                 ]);
                                                 foreach ($sectors->get() as $key5 => $sector) {
                                                     array_push($menu['submenu'][$key + 1]['submenu'][$key2 + 3]['submenu'][$key3 + 2]['submenu'][$key4 + 2]['submenu'], [
                                                         'text' => "{$sector->name}",
                                                         'url' => "#",
-                                                        'icon_color' => 'red',
+                                                        'icon_color' => 'green',
                                                         'submenu' => [
                                                             [
                                                                 'text' => "Estoque {$sector->name}",

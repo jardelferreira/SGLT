@@ -131,6 +131,7 @@ class StockLivewire extends Component
 
             $this->emit('closeModal');
             session()->flash('message', 'Imagem cadastrada com succsso!');
+            $this->product = false;
         }
     }
 

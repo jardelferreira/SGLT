@@ -20,6 +20,10 @@ class Stock extends Model
         return $this->belongsTo(Trecho::class,'trecho_id');
     }
 
+    public function setorDono()
+    {
+        return $this->belongsTo(Sector::class,'sector_id');
+    }
     public function projeto()
     {
         return $this->belongsTo(Project::class,'project_id');

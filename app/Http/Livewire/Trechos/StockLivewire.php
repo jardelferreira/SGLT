@@ -11,14 +11,12 @@ class StockLivewire extends Component
 
     public function mount(Trecho $trecho)
     {
-       //dd($trecho->lote()->with('projeto')->first()->projeto->name);
-        $this->trecho = $trecho;
+        $this->trecho = $trecho; 
     }
     public function render()
     {
         $this->lote = $this->trecho->lote()->first();
-        //dd($this->lote);
-       $this->stock = $this->trecho->stock()->with('canteiroDono')->get();
+       $this->stock = $this->trecho->stock()->with('setorDono.canteiro')->get();
        $this->projeto = $this->trecho->lote()->with('projeto')->first();
         return view('livewire.trechos.stock');
     }

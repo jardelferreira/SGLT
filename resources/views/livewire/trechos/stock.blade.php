@@ -10,10 +10,10 @@
         <p class="mb-0"><i class="fas fa-tachometer-fastest    "></i>Estoque de {{$trecho->name}} 
             <i class="fa fa-arrow-right" aria-hidden="true"></i> {{$projeto->projeto->name}}
         </p>
-            <footer class="blockquote-footer"> <cite title="Source Title">{{$lote->name}} / {{$projeto->projeto->name}}</cite></footer>
+            <footer class="blockquote-footer"> <cite title="Source Title">{{$trecho->name}} / {{$lote->name}} / {{$projeto->projeto->name}}</cite></footer>
         </blockquote>
         <hr />
-        <table class="table table-striped bg-light table-responsive">
+        <table class="table table-striped bg-light">
             <thead>
                 <tr>
                     <th>No.</th>
@@ -22,6 +22,7 @@
                     <th>Código</th>
                     <th>Und.</th>
                     <th>Qtd.</th>
+                    <th>Setor</th>
                     <th>Canteiro</th>
                     {{-- <th>Actions</th> --}}
                 </tr>
@@ -35,7 +36,8 @@
                     <td>{{ $value->cod}}</td>
                     <td>{{ $value->und}}</td>
                     <td>{{ $value->qtd}}</td>
-                    <td>{{ $value->canteiroDono->name}}</td>
+                    <td>{{ $value->setorDono->name}}</td> 
+                    <td>{{ $value->setorDono->canteiro->name}}</td> 
                     {{-- <td class="row">
                         
                         <button wire:click="delete({{ $value->id}})" class="btn btn-danger btn-sm">Delete</button>

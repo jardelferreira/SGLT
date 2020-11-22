@@ -51,7 +51,6 @@ class LoteLivewire extends Component
         $this->resetInputFields();
         $this->emit('closeModal');
         $this->emit('menuUpdate');
-        $this->emit('dataTable');
 
     }
   
@@ -60,7 +59,6 @@ class LoteLivewire extends Component
         $lote = Lote::find($id);
         $this->lote_id = $lote->id;
         $this->name = $lote->name;
-        $this->emit('dataTable');
     }
      
   
@@ -71,7 +69,6 @@ class LoteLivewire extends Component
         session()->flash('message', 'Lote Deleted Successfully.');
         $this->emit('closeModal');
         $this->emit('menuUpdate');
-        $this->emit('dataTable');
 
     }
     public function cancel()

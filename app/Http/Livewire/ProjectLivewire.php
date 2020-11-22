@@ -55,7 +55,6 @@ class ProjectLivewire extends Component
         $this->project_id = $project->id;
         $this->name = $project->name;
         $this->description = $project->description;
-        $this->emit('dataTable');
 
     }
      
@@ -67,7 +66,6 @@ class ProjectLivewire extends Component
         session()->flash('message', 'Project Deleted Successfully.');
         $this->emit('closeModal');
         $this->emit('menuUpdate');
-        $this->emit('dataTable');
     }
     public function cancel()
     {

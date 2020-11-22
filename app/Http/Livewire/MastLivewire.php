@@ -45,7 +45,6 @@ class MastLivewire extends Component
 
         $this->resetInputFields();
         $this->emit('closeModal');
-        $this->emit('dataTable');
     }
   
     public function edit($id)
@@ -56,7 +55,6 @@ class MastLivewire extends Component
         $this->weight = $mast->weight;
         $this->description = $mast->description;
 
-        $this->emit('dataTable');
     }
      
   
@@ -71,6 +69,5 @@ class MastLivewire extends Component
     public function cancel()
     {
         $this->emit('closeModal');
-        $this->emit('dataTable');
     }
 }
