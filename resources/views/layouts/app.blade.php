@@ -8,7 +8,7 @@
     {{-- <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/> --}}
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.6.0/dist/alpine.js" defer></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.css" />
-    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.js"></script>
+    
 
 @stop
 
@@ -32,6 +32,7 @@
 @section('js')
 
     @livewireScripts
+    {{-- <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.js"></script> --}}
     <script type="text/javascript">
         livewire.on('closeModal', () => {
             $('.modal').modal('hide');
