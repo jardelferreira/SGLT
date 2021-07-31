@@ -83,6 +83,10 @@ class StockLivewire extends Component
         $this->stock_id = $this->stock->id;
         $this->name = $this->stock->name;
         $this->description = $this->stock->description;
+        $this->cod = $this->stock->cod;
+        $this->item = $this->stock->item;
+        $this->qtd = $this->stock->qtd;
+        $this->und = $this->stock->und;
     }
 
 

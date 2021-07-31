@@ -7,6 +7,8 @@
     @include('livewire.sectors.stock.update')
     @include('livewire.sectors.stock.delete')
     @include('livewire.sectors.stock.photo')
+    @include('livewire.sectors.stock.edit')
+
     @if (session()->has('message'))
         <div class="alert alert-success" style="margin-top:30px;">
           {{ session('message') }}
@@ -25,7 +27,6 @@
     <table class="table table-bordered table-striped ">
         <thead>
             <tr>
-                <th>No.</th>
                 <th>Nome</th>
                 <th>Item</th>
                 <th>Código</th>
@@ -37,7 +38,6 @@
         <tbody> 
             @foreach($stock as $value)
             <tr>
-                <td>{{ $value->id}}</td>
                 <td>{{ $value->name}}</td>
                 <td>{{ $value->item}}</td>
                 <td>{{ $value->cod}}</td>
@@ -48,6 +48,7 @@
                     <button data-toggle="modal" wire:click='loadProduct({{$value->id}})' data-target="#rmModal" type="button" class="btn btn-sm mr-1 my-1 btn-warning"><i class="fas fa-minus-circle   fa-fw"></i></button>
                     <button data-toggle="modal" wire:click='loadProduct({{$value->id}})' data-target="#photoModal"  class="btn mr-1 my-1 btn-info btn-sm"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
                     <button data-toggle="modal" data-target="#deleteModal" wire:click="confirmDelete({{ $value->id}})" class="btn mr-1 my-1 btn-danger btn-sm"><i class="fas fa-trash-alt fa-fw"></i></button>
+                    <button data-toggle="modal" data-target="#editModal" wire:click="edit({{ $value->id}})" class="btn mr-1 my-1 btn-primary btn-sm"><i class="fas fa-edit    "></i></button>
                     {{-- <button wire:click="delete({{ $value->id}})" class="btn mr-1 btn-danger btn-sm">Delete</button> --}}
                 </td>
             </tr>
