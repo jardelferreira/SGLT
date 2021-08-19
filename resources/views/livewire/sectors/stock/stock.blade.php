@@ -48,8 +48,7 @@
                     <button data-toggle="modal" wire:click='loadProduct({{$value->id}})' data-target="#rmModal" type="button" class="btn btn-sm mr-1 my-1 btn-warning"><i class="fas fa-minus-circle   fa-fw"></i></button>
                     <button data-toggle="modal" wire:click='loadProduct({{$value->id}})' data-target="#photoModal"  class="btn mr-1 my-1 btn-info btn-sm"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
                     <button data-toggle="modal" data-target="#deleteModal" wire:click="confirmDelete({{ $value->id}})" class="btn mr-1 my-1 btn-danger btn-sm"><i class="fas fa-trash-alt fa-fw"></i></button>
-                    <button data-toggle="modal" data-target="#editModal" wire:click="edit({{ $value->id}})" class="btn mr-1 my-1 btn-primary btn-sm"><i class="fas fa-edit    "></i></button>
-                    {{-- <button wire:click="delete({{ $value->id}})" class="btn mr-1 btn-danger btn-sm">Delete</button> --}}
+                    <button data-toggle="modal" data-target="#editModal" wire:click="edit({{ $value->id}})" class="btn mr-1 my-1 btn-primary btn-sm"><i class="fas fa-edit"></i></button>                    {{-- <button wire:click="delete({{ $value->id}})" class="btn mr-1 btn-danger btn-sm">Delete</button> --}}
                 </td>
             </tr>
             @endforeach
