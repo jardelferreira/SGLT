@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Cadastrar setor em <strong> {{$base->name }}</strong></h5>
+                <h5 class="modal-title" id="exampleModalLabel">Cadastrar Lotes em - <strong>{{$projeto->name}}</strong></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                      <span aria-hidden="true close-btn">×</span>
                 </button>
@@ -16,8 +16,8 @@
                         @error('name') <span class="text-danger error">{{ $message }}</span>@enderror
                     </div>
                     <div class="form-group">
-                        <label for="desc_create">Descrição</label>
-                        <input type="text" class="form-control" id="desc_create" placeholder="Enter Name" wire:model.lazy="description">
+                        <label for="description_create">Descrição</label>
+                        <input type="text" class="form-control" id="description_create" placeholder="Enter Name" wire:model.lazy="description">
                         @error('description') <span class="text-danger error">{{ $message }}</span>@enderror
                     </div>
                 </form>

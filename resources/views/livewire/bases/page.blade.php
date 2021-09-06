@@ -1,28 +1,27 @@
 <div>
-    @include('livewire.sectors.create')
-    @include('livewire.sectors.update')
+    @include('livewire.bases.create')
+    @include('livewire.bases.update')
     @if (session()->has('message'))
         <div class="alert alert-success" style="margin-top:30px;">
           {{ session('message') }}
         </div>
     @endif
-    <div class="form-group d-flex col-12">
-            <h1 class=""> Base <i class="fa fa-arrow-right" aria-hidden="true"></i> - <strong>{{$base->name}}</strong></h1><hr>
-    </div>
-            <button type="button" class="btn btn-success " data-toggle="modal" data-target="#exampleModal">
-                <i class="fa fa-plus fa-lg" aria-hidden="true"> </i>  Cadastrar novo Setor   
-            </button>
-    <table class="table table-striped bg-light mt-2 table-responsive">
+    <h1 class="">Projeto <i class="fa fa-arrow-right" aria-hidden="true"></i> - <strong>{{$projeto->name}}</strong></h1><hr>
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+        <i class="fa fa-plus fa-lg" aria-hidden="true"> </i>  Cadastrar nova base
+         </button>
+         <hr>
+    <table class="table table-striped bg-light table-responsive">
         <thead>
             <tr>
                 <th>No.</th>
-                <th>Name</th>
-                <th>description</th>
-                <th>Action</th>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Actions</th>
             </tr>
         </thead>
-        <tbody>
-            @foreach($sectors as $value)
+        <tbody> 
+            @foreach($bases as $value)
             <tr>
                 <td>{{ $value->id }}</td>
                 <td>{{ $value->name }}</td>

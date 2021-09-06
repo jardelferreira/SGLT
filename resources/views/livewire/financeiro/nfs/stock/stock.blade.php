@@ -1,0 +1,54 @@
+<div>
+    @section('title',"Gerenciamento de NFs")
+        
+    @include('livewire.financeiro.nfs.stock.create')
+    @include('livewire.financeiro.nfs.stock.update')
+    @include('livewire.financeiro.nfs.stock.delete')
+    
+    @include('livewire.financeiro.nfs.stock.edit')
+
+    @if (session()->has('message'))
+        <div class="alert alert-success" style="margin-top:30px;">
+          {{ session('message') }}
+        </div>
+    @endif
+    
+    <blockquote class="blockquote">
+    <p class="mb-0"><i class="fas fa-tachometer-fastest"></i>Controle: <strong>Notas Fiscais</strong> 
+        <button data-toggle="modal" data-target="#createModal" wire:click="create()" class="btn btn-success btn-sm"> - Cadastrar NF <i class="fa fa-plus" aria-hidden="true"></i></button>
+    </p>
+    </blockquote>
+    <hr />
+    <table class="table table-bordered table-striped ">
+        <thead>
+            <tr>
+                <th>NF</th>
+                <th>Cliente</th>
+                <th>tipo</th>
+                <th>Arquivo</th>
+                <th>Referência</th>
+                <th>Valor total</th>
+                <th>Projeto</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody> 
+            @foreach($nfs as $value)
+            <tr>
+                <td>{{ $value->nf }}</td>
+                <td>{{ $value->client }}</td>
+                <td>{{ $value->tipo }}</td>
+                <td>{{ $value->arquive }}</td>
+                <td>{{ $value->val }}</td>
+                <td>{{ $value->project }}</td>
+                <td class="row">
+                    <button data-toggle="modal" wire:click='loadProduct({{$value->id}})' data-target="#photoModal"  class="btn mr-1 my-1 btn-info btn-sm"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
+                    <button data-toggle="modal" data-target="#deleteModal" wire:click="confirmDelete({{ $value->id}})" class="btn mr-1 my-1 btn-danger btn-sm"><i class="fas fa-trash-alt fa-fw"></i></button>
+                    <button data-toggle="modal" data-target="#editModal" wire:click="edit({{ $value->id}})" class="btn mr-1 my-1 btn-primary btn-sm"><i class="fas fa-edit"></i></button>                    {{-- <button wire:click="delete({{ $value->id}})" class="btn mr-1 btn-danger btn-sm">Delete</button> --}}
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+</div>

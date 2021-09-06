@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Bases\BaseLivewire;
 use App\Http\Livewire\CourtyardLivewire;
 use App\Http\Livewire\Courtyards\StockLivewire as CourtyardsStockLivewire;
 use App\Http\Livewire\LoteLivewire;
@@ -8,6 +9,7 @@ use App\Http\Livewire\ProjectLivewire;
 use App\Http\Livewire\SectorLivewire;
 use App\Http\Livewire\Sectors\StockLivewire;
 use App\Http\Livewire\Lotes\StockLivewire as LoteStock;
+use App\Http\Livewire\NfLivewire;
 use App\Http\Livewire\Trechos\StockLivewire as TrechoStock;
 use App\Http\Livewire\Project\StockLivewire as ProjetoStock;
 use App\Http\Livewire\Tower\TowerLivewire;
@@ -41,11 +43,22 @@ Route::prefix('dashboard')->middleware(['auth:sanctum', 'verified'])->group(func
         Route::get('types', TypeLivewire::class)->name('dashboard.config.types');
         Route::get('mastros', MastLivewire::class)->name('dashboard.config.mastros');
     });
+
+    Route::prefix('financeiro')->group(function (){
+        Route::get('/nfs',NfLivewire::class)->name('dashboard.financeiro.nfs');
+    });
+
     Route::prefix('projetos')->group(function () {
         Route::get('/', ProjectLivewire::class)->name('dashboard.projects');
         Route::get('/{projeto}/lotes', LoteLivewire::class)->name('dashboard.projects.lotes');
         Route::get('/{projeto}/estoque', ProjetoStock::class)->name('dashboard.projects.estoque');
         Route::get('/{projeto}/torres', TowerLivewire::class)->name('dashboard.projects.torres');
+        Route::get('/{projeto}/bases', BaseLivewire::class)->name('dashboard.projects.bases');
+
+        Route::prefix('/bases')->group(function(){
+            Route::get('/{base}/setores',SectorLivewire::class)->name('dashboard.bases.setores');
+        });
+
         Route::prefix('/lotes')->group(function () {
             Route::get('/{lote}/trechos', TrechoLivewire::class)->name('dashboard.lotes.trechos');
             Route::get('/{lote}/estoque', LoteStock::class)->name('dashboard.lotes.estoque');

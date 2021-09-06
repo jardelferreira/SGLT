@@ -22,10 +22,9 @@ class CreateStocksTable extends Migration
             $table->string('description')->nullable();
             $table->string('path')->nullable();
             $table->float('qtd',8,2,true);
+            $table->foreignId('nf_id')->references('id')->on('nfs')->onDelete('cascade');
             $table->foreignId('project_id')->references('id')->on('projects')->onDelete('cascade');
-            $table->foreignId('lote_id')->references('id')->on('lotes')->onDelete('cascade');
-            $table->foreignId('trecho_id')->references('id')->on('trechos')->onDelete('cascade');
-            $table->foreignId('courtyard_id')->references('id')->on('courtyards')->onDelete('cascade');
+            $table->foreignId('base_id')->references('id')->on('bases')->onDelete('cascade');
             $table->foreignId('sector_id')->references('id')->on('sectors')->onDelete('cascade');
             $table->timestamps();
         });

@@ -17,7 +17,7 @@ class CreateSectorsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('description')->nullable();
-            $table->foreignId('courtyard_id')->references('id')->on('courtyards')->onDelete('cascade');
+            $table->foreignId('base_id')->references('id')->on('bases')->onDelete('cascade');
             $table->timestamps();
         });
     }

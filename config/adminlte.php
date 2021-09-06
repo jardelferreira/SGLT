@@ -249,7 +249,17 @@ return [
         //     'label'       => 4,
         //     'label_color' => 'success',
         // ],
-        //['header' => 'account_settings'],
+        ['header' => 'Gestão de Financeiro'],
+        [
+            'text' => 'Financeiro',
+            'icon' => 'fas fa-money-check-alt',
+            'submenu' => [
+                [
+                    'text' => "Controle de NF's",
+                    'route' => "dashboard.financeiro.nfs"
+                ]
+            ]
+        ],
         [
             'text' => 'Configurações',
             'submenu' => [

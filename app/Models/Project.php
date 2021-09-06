@@ -28,4 +28,9 @@ class Project extends Model
     {
         return $this->hasMany(Tower::class);
     }
+
+    public function bases()
+    {
+        return $this->hasMany(Base::class);
+    }
 }

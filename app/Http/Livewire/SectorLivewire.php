@@ -2,23 +2,23 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Courtyard;
+use App\Models\Base;
 use App\Models\Sector;
 use App\Models\Stock;
 use Livewire\Component;
 
 class SectorLivewire extends Component
 {
-    public $sectors, $name, $description, $sector_id, $canteiro, $stock, $sector;
+    public $sectors, $name, $description, $sector_id, $base, $stock, $sector;
 
-    public function mount(Courtyard $canteiro)
+    public function mount(Base $base)
     {
-        $this->canteiro = $canteiro;
+        $this->base = $base;
     }
     public function render()
     {
         $this->emit('dataTable');
-        $this->sectors = $this->canteiro->sectors()->get();
+        $this->sectors = $this->base->sectors()->get();
         return view('livewire.sectors.page');
     }
 
@@ -26,7 +26,7 @@ class SectorLivewire extends Component
     {
         $this->emit('dataTable');
         return view('livewire.sectors.painel', [
-            'setor' => $setor->with('canteiro')->get()
+            'setor' => $setor->with('base')->get()
         ]);
     }
 
@@ -52,7 +52,7 @@ class SectorLivewire extends Component
         Sector::updateOrCreate(['id' => $this->sector_id], [
             'name' => $this->name,
             'description' => $this->description,
-            'courtyard_id' => $this->canteiro->id
+            'base_id' => $this->base->id
         ]);
 
         session()->flash(

@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Stock extends Model
 {
     use HasFactory;
-    protected $fillable = ['name','path', 'item', 'cod', 'courtyard_id', 'und', 'description', 'qtd', 'trecho_id', 'lote_id', 'project_id', 'sector_id'];
+    protected $fillable = ['name','path', 'item', 'cod', 'base_id', 'und', 'description', 'qtd', 'trecho_id', 'lote_id', 'project_id', 'sector_id'];
 
     public function canteiroDono()
     {
-        return $this->belongsTo(Courtyard::class,'courtyard_id');
+        return $this->belongsTo(Courtyard::class,'base_id');
     }
 
     public function trechoDono()

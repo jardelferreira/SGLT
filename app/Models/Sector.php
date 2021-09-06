@@ -10,15 +10,20 @@ class Sector extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description','courtyard_id'];
+    protected $fillable = ['name', 'description','base_id'];
 
     public function canteiro()
     {
-        return $this->belongsTo(Courtyard::class,'courtyard_id');
+        return $this->belongsTo(Courtyard::class,'base_id');
     }
 
     public function stock()
     {
         return $this->hasMany(Stock::class);
+    }
+
+    public function base()
+    {
+        return $this->belongsTo(Base::class);
     }
 }
