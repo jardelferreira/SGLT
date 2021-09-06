@@ -32,7 +32,7 @@
                     </div>
                     <div class="form-group">
                         <label for="reference_create">Referência</label>
-                        <input type="text" class="form-control" id="reference_create" placeholder="Enter Name" wire:model.lazy="reference">
+                        <input type="number" class="form-control" id="reference_create" placeholder="Enter Name" wire:model.lazy="reference">
                         @error('reference') <span class="text-danger error">{{ $message }}</span>@enderror
                     </div>
                     <div class="form-group">
@@ -60,7 +60,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Fechar</button>
-                <button type="button" wire:click.prevent="store()" class="btn btn-primary close-modal">Salvar</button>
+                <button type="button" wire:click.prevent="addNf()" class="btn btn-primary close-modal">Salvar</button>
             </div>
         </div>
     </div>

@@ -14,13 +14,13 @@ class NfLivewire extends Component
     public function mount(NF $nfs, Project $project)
     {
         $this->projects = $project->all();
-        $this->nfs = $nfs->all();
+       // $this->nfs = $nfs->with('projeto')->get();
     }
 
     public function render()
     {
         $this->emit('dataTable');
-
+        $this->nfs = Nf::with('projeto')->get();
         return view('livewire.financeiro.nfs.stock.stock');
     }
 
@@ -33,6 +33,13 @@ class NfLivewire extends Component
     {
         $this->nf = '';
         $this->description = '';
+        $this->cod = "";
+        $this->arquive = "";
+        $this->tipo = "";
+        $this->reference = "";
+        $this->cliente = "";
+        $this->val = "";
+        
     }
 
     public function confirmDelete(Nf $nf)
@@ -56,7 +63,7 @@ class NfLivewire extends Component
             'cod' => 'required|min:3',
             'cliente' => 'required',
             'tipo' => 'required',
-            'reference' => 'numeric|required'
+            'reference' => 'numeric|nullable'
         ]);
 
         Nf::updateOrCreate(['id' => $this->nf_id], [
@@ -76,7 +83,7 @@ class NfLivewire extends Component
 
         session()->flash(
             'message',
-            $this->nf_id ? 'Product Updated Successfully.' : 'Product Created Successfully.'
+            $this->nf_id ? 'Nota Atualizada com sucesso!' : 'Nota cadastrada com sucesso!'
         );
     }
 

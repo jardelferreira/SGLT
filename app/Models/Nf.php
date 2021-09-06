@@ -17,4 +17,9 @@ class Nf extends Model
     {
         return $this->hasMany(ItemNf::class);
     }
+
+    public function projeto()
+    {
+        return $this->belongsTo(Project::class,'project_id');
+    }
 }

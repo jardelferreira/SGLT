@@ -22,6 +22,7 @@
     <table class="table table-bordered table-striped ">
         <thead>
             <tr>
+                <th>Nº</th>
                 <th>NF</th>
                 <th>Cliente</th>
                 <th>tipo</th>
@@ -35,12 +36,14 @@
         <tbody> 
             @foreach($nfs as $value)
             <tr>
+                <td>{{ $value->id }}</td>
                 <td>{{ $value->nf }}</td>
-                <td>{{ $value->client }}</td>
+                <td>{{ $value->cliente }}</td>
                 <td>{{ $value->tipo }}</td>
                 <td>{{ $value->arquive }}</td>
+                <td>{{ $value->reference }}</td>
                 <td>{{ $value->val }}</td>
-                <td>{{ $value->project }}</td>
+                <td>{{ $value->projeto->name }}</td>
                 <td class="row">
                     <button data-toggle="modal" wire:click='loadProduct({{$value->id}})' data-target="#photoModal"  class="btn mr-1 my-1 btn-info btn-sm"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
                     <button data-toggle="modal" data-target="#deleteModal" wire:click="confirmDelete({{ $value->id}})" class="btn mr-1 my-1 btn-danger btn-sm"><i class="fas fa-trash-alt fa-fw"></i></button>
