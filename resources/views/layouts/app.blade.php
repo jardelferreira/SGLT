@@ -57,6 +57,9 @@
     </script>
     <script>
         $(document).ready(function() {
+            $('#bd-example-modal-xl').on('hidden.bs.modal', function (e) {
+                location.reload()
+            })
             $('table').DataTable({
                 dom: 'Bfrtip',
                 lengthMenu: [

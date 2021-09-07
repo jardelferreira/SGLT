@@ -4,6 +4,7 @@
     @include('livewire.financeiro.nfs.stock.create')
     @include('livewire.financeiro.nfs.stock.update')
     @include('livewire.financeiro.nfs.stock.delete')
+    @include('livewire.financeiro.nfs.stock.nota')
     
     @include('livewire.financeiro.nfs.stock.edit')
 
@@ -19,6 +20,8 @@
     </p>
     </blockquote>
     <hr />
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Extra large modal</button>
+
     <table class="table table-bordered table-striped ">
         <thead>
             <tr>
@@ -40,8 +43,14 @@
                 <td>{{ $value->nf }}</td>
                 <td>{{ $value->cliente }}</td>
                 <td>{{ $value->tipo }}</td>
-                <td>{{ $value->arquive }}</td>
-                <td>{{ $value->reference }}</td>
+                <td>@if ($value->arquive)
+                    <button class="btn mr-1 my-1 btn-danger btn-sm ml-1" 
+                    data-toggle="modal" data-target="#bd-example-modal-xl" wire:click='loadNf({{$value->id}})'>
+                        <i class="fas fa-file-pdf" aria-hidden="true"></i></button></td>
+                @else
+                    <button class="btn mr-1 btn-warning btn-sm ">Subir nf</button>
+                @endif
+                <td>{{ $value->referenceNf['nf'] }}</td>
                 <td>{{ $value->val }}</td>
                 <td>{{ $value->projeto->name }}</td>
                 <td class="row">

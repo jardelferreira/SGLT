@@ -33,4 +33,9 @@ class Project extends Model
     {
         return $this->hasMany(Base::class);
     }
+
+    public function nfs()
+    {
+        return $this->hasMany(Nf::class);
+    }
 }

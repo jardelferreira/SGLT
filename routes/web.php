@@ -10,6 +10,7 @@ use App\Http\Livewire\SectorLivewire;
 use App\Http\Livewire\Sectors\StockLivewire;
 use App\Http\Livewire\Lotes\StockLivewire as LoteStock;
 use App\Http\Livewire\NfLivewire;
+use App\Http\Livewire\PdfViewer;
 use App\Http\Livewire\Trechos\StockLivewire as TrechoStock;
 use App\Http\Livewire\Project\StockLivewire as ProjetoStock;
 use App\Http\Livewire\Tower\TowerLivewire;
@@ -42,6 +43,10 @@ Route::prefix('dashboard')->middleware(['auth:sanctum', 'verified'])->group(func
     Route::prefix('config')->group(function () {
         Route::get('types', TypeLivewire::class)->name('dashboard.config.types');
         Route::get('mastros', MastLivewire::class)->name('dashboard.config.mastros');
+    });
+
+    Route::prefix('preview')->group(function (){
+        Route::get('nota/{nf}/preview',PdfViewer::class)->name('dashboard.preview.nota');
     });
 
     Route::prefix('financeiro')->group(function (){

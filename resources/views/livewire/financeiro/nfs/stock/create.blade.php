@@ -31,11 +31,6 @@
                         @error('tipo') <span class="text-danger error">{{ $message }}</span>@enderror
                     </div>
                     <div class="form-group">
-                        <label for="reference_create">Referência</label>
-                        <input type="number" class="form-control" id="reference_create" placeholder="Enter Name" wire:model.lazy="reference">
-                        @error('reference') <span class="text-danger error">{{ $message }}</span>@enderror
-                    </div>
-                    <div class="form-group">
                         <label for="val_create">Valor total</label>
                         <input type="text" class="form-control" id="val_create" placeholder="Enter Name" wire:model.lazy="val">
                         @error('val') <span class="text-danger error">{{ $message }}</span>@enderror
@@ -51,10 +46,27 @@
                       </select>
                       @error('project_id') <span class="text-danger error">{{ $message }}</span>@enderror
                     </div>
+                    <div class="form-group">
+                      <label for="reference_create">Referência</label>
+                      <select class="form-control" name="reference" id="reference" wire:model.lazy="reference">
+                        <option value="">Selecione</option> 
+                        @foreach ($references as $value)
+                          <option value="{{$value->id}}">{{$value->nf}}</option>
+                          @endforeach
+                        
+                      </select>
+                      @error('reference') <span class="text-danger error">{{ $message }}</span>@enderror
+                    </div>
                         <div class="form-group">
                         <label for="desc_create">Descrição</label>
                         <input type="text" class="form-control" id="desc_create" placeholder="Enter Name" wire:model.lazy="description">
                         @error('description') <span class="text-danger error">{{ $message }}</span>@enderror
+                    </div>
+                    <div class="form-group">
+                      <label for="nf_create">Nota fiscal</label>
+                      <input type="file" class="form-control-file" name="nf_create" id="nf_create"
+                      wire:model.lazy="arquive" placeholder="Selecionar aquivo" aria-describedby="arquivoId">
+                      <small id="arquivoId" class="form-text text-muted">Click para adicionar NF</small>
                     </div>
                 </form>
             </div>

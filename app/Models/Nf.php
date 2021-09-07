@@ -12,7 +12,7 @@ class Nf extends Model
     protected $fillable = [
         'cliente','nf','cod','tipo','arquive','description','reference','val','project_id'
     ];
-
+    // protected $appends = ['reference_id'];
     public function items()
     {
         return $this->hasMany(ItemNf::class);
@@ -21,5 +21,15 @@ class Nf extends Model
     public function projeto()
     {
         return $this->belongsTo(Project::class,'project_id');
+    }
+
+    public function references($id)
+    {
+        return Nf::where('project_id',$id);
+    }
+
+    public function referenceNf()
+    {
+        return $this->hasOne(Nf::class,'id','reference');
     }
 }
