@@ -25,8 +25,12 @@ class NfLivewire extends Component
         $this->emit('dataTable');
         $this->references = Nf::where('project_id',$this->project_id)->get();
         $this->nfs = Nf::with('projeto')->get();
-        
         return view('livewire.financeiro.nfs.stock.stock');
+    }
+
+    public function cancel()
+    {
+        $this->resetInputFields();
     }
 
     public function create()
@@ -49,7 +53,7 @@ class NfLivewire extends Component
 
     public function confirmDelete(Nf $nf)
     {
-     $this->nf = $nf->nf;
+     $this->nf = $nf;
  
     }
 
@@ -60,8 +64,9 @@ class NfLivewire extends Component
 
     public function addNf()
     {
-        $data = $this->validate([
-            'nf' => 'required|min:3',
+        
+         $this->validate([
+            'nf' => "required|min:3|unique:nfs,nf,{$this->nf_id},id",
             'val' => 'required',
             'project_id' => 'required',
             'description' => 'nullable',
@@ -69,8 +74,10 @@ class NfLivewire extends Component
             'cliente' => 'required',
             'tipo' => 'required',
             'reference' => 'numeric|nullable',
-            'arquive' => 'nullable|'
+            'arquive' => 'required|mimes:pdf|max:2048'
         ]);
+        // \dd($data);
+        $this->reference = 0;
         $filename = $this->arquive->store('Nfs','public');
        if ($filename) {
            Nf::updateOrCreate(['id' => $this->nf_id], [
@@ -98,9 +105,72 @@ class NfLivewire extends Component
         );
     }
 
-    public function loadNf(Nf $nf)
+    public function loadNf(Nf $nf_pre)
     {
-        $this->nf_preview = $nf->toArray();
+        $this->nf_preview = $nf_pre->toArray();
+        
     }
 
+    public function delete(Nf $nf)
+    {
+        
+        $nf->delete();
+        session()->flash('message', 'Produto Deleted Successfully.');
+        $this->emit('closeModal');
+        //$this->emit('dataTable');
+
+    }
+
+    public function edit(Nf $nf)
+    {
+        $this->nf = $nf->nf;
+        $this->description = $nf->description;
+        $this->cod = $nf->cod;
+        $this->arquive = $nf->arquive;
+        $this->tipo = $nf->tipo;
+        $this->reference = $nf->reference;
+        $this->cliente = $nf->cliente;
+        $this->val = $nf->val;
+        $this->nf_id = $nf->id;
+        $this->project_id = $nf->project_id;
+
+        
+    }
+
+    public function store()
+    {
+        $this->validate([
+            'nf' => "required|min:3|unique:nfs,nf,{$this->nf_id},id",
+            'val' => 'required',
+            'project_id' => 'required',
+            'description' => 'nullable',
+            'cod' => 'required|min:3',
+            'cliente' => 'required',
+            'tipo' => 'required',
+            'reference' => 'numeric|nullable',
+            // 'arquive' => 'required|mimes:pdf|max:2048'
+        ]);
+        
+       
+          Nf::updateOrCreate(['id' => $this->nf_id], [
+               'nf' => $this->nf,
+               'val' => $this->val,
+               'project_id' => $this->project_id,
+               'description' => $this->description,
+               'cod' => $this->cod,
+               'cliente' => $this->cliente,
+               'tipo' => $this->tipo,
+               'reference' => $this->reference,
+               'arquive' => $this->arquive,
+           ]);
+           
+            //    $this->emit('dataTable');
+               session()->flash(
+                   'message',
+                   $this->nf_id ? 'Nota Atualizada com sucesso!' : 'Nota cadastrada com sucesso!'
+               );
+           $this->resetInputFields();
+           $this->emit('closeModal');
+       
+    }
 }

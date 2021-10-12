@@ -9,14 +9,14 @@
             </div>
             <div class="modal-body">
                 <div class="alert alert-light" role="alert">
-                    <h4 class="alert-heading">Deletar  nome ?</h4>
+                    <h4 class="alert-heading">Deletar NF-{{$nf['nf']}} ?</h4>
                     <p class="text-danger my-1"><strong> Atenção <i class="fas fa-exclamation  fa-fw"></i></strong></p>
                     <p class="my-2">Esta ação irá remover permanantemente este item do sistema, você realmente deseja excluir?</p>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" wire:click.prevent="delete({{0}})" class="btn btn-danger" data-dismiss="modal">Excluir</button>
+                <button type="button"  class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" wire:click.prevent="delete({{$nf}})" class="btn btn-danger" data-dismiss="modal">Excluir</button>
             </div>
        </div>
     </div>

@@ -30,6 +30,6 @@ class Nf extends Model
 
     public function referenceNf()
     {
-        return $this->hasOne(Nf::class,'id','reference');
+        return $this->hasOne(Nf::class,'id','reference')->get();
     }
 }

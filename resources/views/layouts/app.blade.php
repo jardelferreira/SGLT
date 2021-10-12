@@ -57,9 +57,13 @@
     </script>
     <script>
         $(document).ready(function() {
-            $('#bd-example-modal-xl').on('hidden.bs.modal', function (e) {
-                location.reload()
+            $('#bd-example-modal-xl').on('show.bs.modal', function (e) {
+                $('.loader').show();
+               $('.modal-header, .modal-body, .modal-footer').hide()
             })
+
+            $("#nf_load").on('load',() => $('.loader').hide(1000))
+
             $('table').DataTable({
                 dom: 'Bfrtip',
                 lengthMenu: [

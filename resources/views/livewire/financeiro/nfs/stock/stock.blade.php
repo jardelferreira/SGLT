@@ -20,8 +20,6 @@
     </p>
     </blockquote>
     <hr />
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Extra large modal</button>
-
     <table class="table table-bordered table-striped ">
         <thead>
             <tr>
@@ -29,8 +27,8 @@
                 <th>NF</th>
                 <th>Cliente</th>
                 <th>tipo</th>
-                <th>Arquivo</th>
-                <th>Referência</th>
+                <th>PDF</th>
+                <th>Ref.</th>
                 <th>Valor total</th>
                 <th>Projeto</th>
                 <th>Actions</th>
@@ -43,19 +41,17 @@
                 <td>{{ $value->nf }}</td>
                 <td>{{ $value->cliente }}</td>
                 <td>{{ $value->tipo }}</td>
-                <td>@if ($value->arquive)
-                    <button class="btn mr-1 my-1 btn-danger btn-sm ml-1" 
+                <td> <button class="btn mr-1 my-1 btn-danger btn-sm ml-1" 
                     data-toggle="modal" data-target="#bd-example-modal-xl" wire:click='loadNf({{$value->id}})'>
                         <i class="fas fa-file-pdf" aria-hidden="true"></i></button></td>
-                @else
-                    <button class="btn mr-1 btn-warning btn-sm ">Subir nf</button>
-                @endif
-                <td>{{ $value->referenceNf['nf'] }}</td>
+                <td>@if (count($value->referenceNf()))
+                    {{$value->referenceNf()[0]->nf}}
+                @endif</td>
                 <td>{{ $value->val }}</td>
                 <td>{{ $value->projeto->name }}</td>
                 <td class="row">
                     <button data-toggle="modal" wire:click='loadProduct({{$value->id}})' data-target="#photoModal"  class="btn mr-1 my-1 btn-info btn-sm"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
-                    <button data-toggle="modal" data-target="#deleteModal" wire:click="confirmDelete({{ $value->id}})" class="btn mr-1 my-1 btn-danger btn-sm"><i class="fas fa-trash-alt fa-fw"></i></button>
+                    <button data-toggle="modal" data-target="#deleteModal" wire:click="confirmDelete({{ $value}})" class="btn mr-1 my-1 btn-danger btn-sm"><i class="fas fa-trash-alt fa-fw"></i></button>
                     <button data-toggle="modal" data-target="#editModal" wire:click="edit({{ $value->id}})" class="btn mr-1 my-1 btn-primary btn-sm"><i class="fas fa-edit"></i></button>                    {{-- <button wire:click="delete({{ $value->id}})" class="btn mr-1 btn-danger btn-sm">Delete</button> --}}
                 </td>
             </tr>
