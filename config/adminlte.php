@@ -249,10 +249,32 @@ return [
         //     'label'       => 4,
         //     'label_color' => 'success',
         // ],
+        ['header' => 'Gestão de acesso'],
+        [
+            'text' => 'Gerenciar ',
+            'icon' => 'fa fa-user-cog',
+            'submenu' => [
+                [
+                    'text' => 'Usuários',
+                    'url' => '#',
+                    'icon' => 'fa fa-user'
+                ],
+                [
+                    'text' => 'Permissões',
+                    'icon' => 'fa fa-user-secret',
+                    'route' => 'dashboard.permissions.page'
+                ],
+                [
+                    'text' => 'Funções',
+                    'icon' => 'fa fa-user-tie',
+                    'route' => 'dashboard.roles.page'
+                ],
+            ]
+                ],
         ['header' => 'Gestão de Financeiro'],
         [
             'text' => 'Financeiro',
-            'icon' => 'fas fa-money-check-alt',
+            'icon' => 'fas fa-file-invoice-dollar',
             'submenu' => [
                 [
                     'text' => "Controle de NF's",

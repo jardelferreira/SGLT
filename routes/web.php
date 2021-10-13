@@ -1,21 +1,24 @@
 <?php
 
 use App\Http\Livewire\Bases\BaseLivewire;
-use App\Http\Livewire\CourtyardLivewire;
 use App\Http\Livewire\Courtyards\StockLivewire as CourtyardsStockLivewire;
+use App\Http\Livewire\CourtyardLivewire;
 use App\Http\Livewire\LoteLivewire;
 use App\Http\Livewire\MastLivewire;
 use App\Http\Livewire\ProjectLivewire;
 use App\Http\Livewire\SectorLivewire;
-use App\Http\Livewire\Sectors\StockLivewire;
-use App\Http\Livewire\Lotes\StockLivewire as LoteStock;
 use App\Http\Livewire\NfLivewire;
 use App\Http\Livewire\PdfViewer;
+use App\Http\Livewire\TypeLivewire;
+use App\Http\Livewire\TrechoLivewire;
+use App\Http\Livewire\Sectors\StockLivewire;
+use App\Http\Livewire\Lotes\StockLivewire as LoteStock;
+use App\Http\Livewire\Permissions\PermissionsLivewire;
 use App\Http\Livewire\Trechos\StockLivewire as TrechoStock;
 use App\Http\Livewire\Project\StockLivewire as ProjetoStock;
+use App\Http\Livewire\Roles\RolePermissionsLivewire;
+use App\Http\Livewire\Roles\RolesLivewire;
 use App\Http\Livewire\Tower\TowerLivewire;
-use App\Http\Livewire\TrechoLivewire;
-use App\Http\Livewire\TypeLivewire;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,6 +46,15 @@ Route::prefix('dashboard')->middleware(['auth:sanctum', 'verified'])->group(func
     Route::prefix('config')->group(function () {
         Route::get('types', TypeLivewire::class)->name('dashboard.config.types');
         Route::get('mastros', MastLivewire::class)->name('dashboard.config.mastros');
+    });
+
+    Route::prefix('roles')->group(function () {
+        Route::get('/page',RolesLivewire::class)->name('dashboard.roles.page');
+        Route::get('/{role}/permissions',RolePermissionsLivewire::class)->name('dashboard.roles.permissions');
+    });
+
+    Route::prefix('permissions')->group(function () {
+        Route::get('/page',PermissionsLivewire::class)->name('dashboard.permissions.page');
     });
 
     Route::prefix('preview')->group(function (){

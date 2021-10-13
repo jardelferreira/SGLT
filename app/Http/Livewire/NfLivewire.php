@@ -4,18 +4,23 @@ namespace App\Http\Livewire;
 
 use App\Models\Nf;
 use App\Models\Project;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+
 
 class NfLivewire extends Component
 {
     use WithFileUploads;
+    use AuthorizesRequests;
+    
 
     public $cliente,$nf,$cod,$tipo,$arquive,$description,$reference,$val,$project_id, $projects,$nfs;
-    public $nf_id ,$references, $project, $nf_preview;
+    public $nf_id ,$references, $project, $nf_preview, $nf_deleted;
 
     public function mount(NF $nfs, Project $project)
     {
+        // $this->authorize('admin');
         $this->projects = $project->all();
        // $this->nfs = $nfs->with('projeto')->get();
     }
@@ -51,9 +56,9 @@ class NfLivewire extends Component
         
     }
 
-    public function confirmDelete(Nf $nf)
+    public function confirmDelete(Nf $nf_deleted)
     {
-     $this->nf = $nf;
+     $this->nf_deleted = $nf_deleted;
  
     }
 
@@ -76,8 +81,8 @@ class NfLivewire extends Component
             'reference' => 'numeric|nullable',
             'arquive' => 'required|mimes:pdf|max:2048'
         ]);
-        // \dd($data);
-        $this->reference = 0;
+        // // \dd($data);
+        // $this->reference = 0;
         $filename = $this->arquive->store('Nfs','public');
        if ($filename) {
            Nf::updateOrCreate(['id' => $this->nf_id], [
@@ -111,10 +116,10 @@ class NfLivewire extends Component
         
     }
 
-    public function delete(Nf $nf)
+    public function delete()
     {
         
-        $nf->delete();
+        $this->nf_deleted->delete();
         session()->flash('message', 'Produto Deleted Successfully.');
         $this->emit('closeModal');
         //$this->emit('dataTable');
